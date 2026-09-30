@@ -1,0 +1,1813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juliette Kuno — Portfolio</title>
+<meta name="description" content="Case study: Ganbare, a simple, effective training app built for easy tracking and scheduling. Product &amp; UX by Juliette Kuno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-start">Skip to content</a>
+  <nav class="nav">
+    <a class="nav__name" href="#/home">Juliette Kuno</a>
+    <div class="nav__links">
+      <a href="#/work" data-nav="work">Case Studies &amp; Projects</a>
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+    </div>
+  </nav>
+  <span id="main-start" tabindex="-1"></span>
+
+  <div class="view" id="view-home">
+<main>
+    <header class="hero hero--wide">
+      <div class="hero__inner">
+        <p class="hero__eyebrow mono">Product Management &middot; UX Design</p>
+        <h1>Hey there, I&rsquo;m Juliette.</h1>
+        <div class="hero__cols">
+          <p class="hero__lead">I&rsquo;m a product manager in the making. I use UX design thinking to create
+          products that have a clear social or environmental impact.</p>
+          <div class="hero__aside">
+            <p class="subtle hero__note">This site walks through my process on real projects, starting
+            with a training app I designed and built for myself and my partner.</p>
+            <div class="hero__cta">
+              <a class="link-arrow" href="#/work">Case Studies <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </main>
+  </div>
+
+  <div class="view" id="view-work" hidden>
+<main class="page">
+    <header class="page-head">
+      <h1>Case Studies &amp; Projects</h1>
+      <p class="page-head__lead"> I'd like to show you what I can do. Here, you can get a solid idea of my work process, how I approach finding the solution to a problem.</p>
+    </header>
+
+    <div class="page-body prose">
+      <article class="project">
+        <h2>Ganbare</h2>
+        <div class="project__body">
+          <p>A simple, effective training app built for easy tracking and scheduling.
+          My partner and I train for several sports each week — our plans used to live
+          across a spreadsheet, a notes app, a timer, our calendars, and pen and paper.
+          Ganbare centralises all five in one weekly view we actually open every day.</p>
+          <div class="project__side">
+            <ul class="project__meta">
+              <li>Role <b>Product &amp; UX, solo</b></li>
+              <li>Users <b>2 — myself &amp; my partner</b></li>
+              <li>Platform <b>Web app</b></li>
+              <li>Status <b>Live &amp; in daily use</b></li>
+            </ul>
+            <div class="project__cta">
+              <a class="link-arrow" href="#/case">Read the case study <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+  </div>
+
+  <div class="view" id="view-case" hidden>
+<main class="page cs-layout cs-tabbed">
+
+    <!-- Desktop-only sticky section rail. Keep the list in sync with the
+         in-header Table of Contents below. -->
+    <aside class="cs-rail">
+      <div class="cs-rail__inner">
+        <div class="cs-tabs cs-tabs--rail" role="group" aria-label="Jump to a part of the case study">
+          <button class="cs-tab" type="button" data-tab-btn="product"
+                  aria-controls="panel-product" aria-current="true" tabindex="0">Product</button>
+          <button class="cs-tab" type="button" data-tab-btn="problem"
+                  aria-controls="panel-problem" tabindex="0">Problem</button>
+          <button class="cs-tab" type="button" data-tab-btn="process"
+                  aria-controls="panel-process" tabindex="0">Process</button>
+        </div>
+        <nav aria-label="On this page">
+        <p class="cs-rail__label mono">On this page</p>
+        <ol>
+          <li data-tab="product"><a href="#product"><span class="num">01</span>The Product</a></li>
+          <li data-tab="product"><a href="#decisions"><span class="num">02</span>Product Decisions &amp; Trade-Offs</a></li>
+          <li data-tab="problem"><a href="#problem"><span class="num">03</span>The Problem</a></li>
+          <li data-tab="process"><a href="#why"><span class="num">04</span>Why build Ganbare</a></li>
+          <li data-tab="process"><a href="#process"><span class="num">05</span>The thought process</a>
+            <ol>
+              <li><a href="#empathize"><span class="num">I</span>Empathize</a></li>
+              <li><a href="#define"><span class="num">II</span>Define</a></li>
+              <li><a href="#ideate"><span class="num">III</span>Ideate</a></li>
+              <li><a href="#develop"><span class="num">IV</span>Develop &amp; Test</a></li>
+            </ol>
+          </li>
+          <li data-tab="process"><a href="#results"><span class="num">06</span>Results &amp; Impacts</a></li>
+          <li data-tab="process"><a href="#future"><span class="num">07</span>The Future of Ganbare</a>
+            <ol>
+              <li><a href="#next-features">Next and potential app features</a></li>
+              <li><a href="#ui-design">User Interface &amp; Design Concepts</a></li>
+            </ol>
+          </li>
+          <li data-tab="process"><a href="#reflection"><span class="num">08</span>Reflection</a></li>
+        </ol>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="cs-main">
+    <header class="page-head">
+      <div class="cs-title-row">
+        <h1>Ganbare</h1>
+        <a class="link-arrow" href="https://trainer-tau-puce.vercel.app/home" target="_blank" rel="noopener noreferrer" aria-label="Check out the app (opens in a new tab)">Check out the app <span aria-hidden="true">&nearr;</span></a>
+      </div>
+      <p class="cs-lead">A simple, effective training app built for easy tracking and
+      scheduling.</p>
+      <p class="cs-pronounce">*pronounced gahn-bah-reh, "do your best" in Japanese</p>
+
+      <dl class="cs-meta">
+        <div><dt>Role</dt><dd>Product &amp; UX, solo</dd></div>
+        <div><dt>Users</dt><dd>2 &mdash; myself &amp; my partner</dd></div>
+        <div><dt>Platform</dt><dd>Web app</dd></div>
+        <div><dt>Status</dt><dd>Live &amp; in daily use</dd></div>
+      </dl>
+
+    </header>
+
+      <div class="cs-tabs cs-tabs--inline" role="group" aria-label="Jump to a part of the case study">
+        <button class="cs-tab" type="button" data-tab-btn="product"
+                aria-controls="panel-product" aria-current="true" tabindex="0">Product</button>
+        <button class="cs-tab" type="button" data-tab-btn="problem"
+                aria-controls="panel-problem" tabindex="0">Problem</button>
+        <button class="cs-tab" type="button" data-tab-btn="process"
+                aria-controls="panel-process" tabindex="0">Process</button>
+      </div>
+
+      <nav class="cs-toc cs-head-toc" aria-label="Table of contents">
+        <p class="cs-toc__label mono">On this page</p>
+        <ol>
+          <li data-tab="product"><a href="#product"><span class="num">01</span>The Product</a></li>
+          <li data-tab="product"><a href="#decisions"><span class="num">02</span>Product Decisions &amp; Trade-Offs</a></li>
+          <li data-tab="problem"><a href="#problem"><span class="num">03</span>The Problem: 5 tools, 0 picture</a></li>
+          <li data-tab="process"><a href="#why"><span class="num">04</span>Why build Ganbare</a></li>
+          <li data-tab="process"><a href="#process"><span class="num">05</span>The thought process</a>
+            <ol>
+              <li><a href="#empathize"><span class="num">I</span>Empathize &mdash; Living the problem</a></li>
+              <li><a href="#define"><span class="num">II</span>Define &mdash; Scoping the MVP</a></li>
+              <li><a href="#ideate"><span class="num">III</span>Ideate &mdash; Sketch, flow, then build</a></li>
+              <li><a href="#develop"><span class="num">IV</span>Develop &amp; Test &mdash; Ship it into our own week</a></li>
+            </ol>
+          </li>
+          <li data-tab="process"><a href="#results"><span class="num">06</span>Results &amp; Impacts</a></li>
+          <li data-tab="process"><a href="#future"><span class="num">07</span>The Future of Ganbare</a>
+            <ol>
+              <li><a href="#next-features">Next and potential app features</a></li>
+              <li><a href="#ui-design">User Interface &amp; Design Concepts</a></li>
+            </ol>
+          </li>
+          <li data-tab="process"><a href="#reflection"><span class="num">08</span>Reflection</a></li>
+        </ol>
+      </nav>
+
+    <div class="page-body">
+
+      <div class="cs-panel" id="panel-product">
+
+      <!-- 01 -->
+      <section class="cs-section" id="product">
+        <h2><span class="n">01</span> The Product</h2>
+        <p class="cs-lede">One app with the core features needed by both users: the homepage hosting the
+        weekly plan, today&rsquo;s workout(s), a workout builder, an in-workout tracker,
+        and a library to host the training activities.</p>
+
+        <div class="feature-grid product-shots">
+          <figure>
+            <img class="shot" src="assets/ganbare/product-1-homepage.jpg" alt="Ganbare homepage: today's date and greeting, workouts scheduled for today each with a Start Workout button, and a This Week list of days with their planned sessions">
+            <figcaption>
+              <b>Homepage &amp; Weekly View</b>
+              <div class="figcaption__body">
+                An overall view of what&rsquo;s coming up &mdash; what workouts are planned
+                or completed for today and the rest of the week:
+                <ul>
+                  <li>Single view of the week.</li>
+                  <li>Replaces the rebuild-every-week spreadsheet and calendar.</li>
+                  <li>Planning now takes under 5 minutes.</li>
+                </ul>
+              </div>
+            </figcaption>
+          </figure>
+          <figure>
+            <img class="shot" src="assets/ganbare/product-2-library.jpg" alt="Ganbare library screen with Workouts and Exercises tabs, a search field, category filters and saved workouts">
+            <figcaption>
+              <b>Workout &amp; Exercise Library</b>
+              <div class="figcaption__body">
+                A library of workouts and exercises where you can:
+                <ul>
+                  <li>Assemble a workout from saved exercises.</li>
+                  <li>Choose different metrics for their exercises.</li>
+                  <li>Write notes in one place, all modular.</li>
+                  <li>Access a library of bespoke workouts [15+ workouts, 10+ workout
+                  filters, 20+ individual exercises uploaded in the libraries created so
+                  far].</li>
+                </ul>
+              </div>
+            </figcaption>
+          </figure>
+          <figure>
+            <img class="shot" src="assets/ganbare/product-3-live-tracker.jpg" alt="Ganbare live workout screen showing scheduled date, duration and active rest at the top, then each exercise with sets, reps and a Done checkbox">
+            <figcaption>
+              <b>Live Workout Tracker</b>
+              <div class="figcaption__body">
+                An open workout. Here, you can see some overall stats at the top, as well as
+                check boxes that can be ticked off when doing the workout. Tracking
+                today&rsquo;s workout &amp; its metrics:
+                <ul>
+                  <li>Tick off duration, sets, reps in real time for each scheduled
+                  workout.</li>
+                  <li>Replaces the standalone timer + pen &amp; paper tools.</li>
+                  <li>Used in 30+ sessions since launch so far.</li>
+                </ul>
+              </div>
+            </figcaption>
+          </figure>
+          <figure>
+            <img class="shot" src="assets/ganbare/product-4-builder.jpg" alt="Ganbare Build a New Workout form with workout name, type chips such as cardio, climbing and strength, total duration and notes">
+            <figcaption>
+              <b>Workout Builder</b>
+              <div class="figcaption__body">
+                Your own bespoke workout builder where you can:
+                <ul>
+                  <li>Create, edit and delete workouts.</li>
+                  <li>Choose a bespoke workout structure &mdash; between exercise or
+                  session-based, each with its own metrics.</li>
+                  <li>Replace notes and floating workout details altogether.</li>
+                </ul>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="cs-section" id="decisions">
+        <h2><span class="n">02</span> Product decisions &amp; trade-offs</h2>
+
+        <div class="callout">
+          <h3>Minimalist, simple design &rarr; clear goals &amp; faster shipping</h3>
+          <p>I&rsquo;m not a visual designer and my knowledge of creating UI is basic.
+          Opting for a minimalist app style and behavior was the right decision on multiple
+          fronts. I felt a strong pull towards spending time making the app look visually
+          great, but it needed time I didn&rsquo;t have. The app didn&rsquo;t need to be a
+          visual piece of art for us to start using it, or to function how we needed it to.
+          We needed a usable app fast so we could improve our training scheduling methods.
+          The decision was challenging. The idea of releasing the app with a stand-in
+          design, instead of a finished one, was frustrating, I wanted the app to look good
+          right away, but realized that iteration would lead towards continuous
+          improvement.</p>
+          <div class="decision-parts">
+            <div>
+              <p class="cs-key">What was needed</p>
+              <ul>
+                <li>A straight-to-the-point structure for each core action supported by a
+                simple design.</li>
+                <li>Clear split between necessary features and nice-to-haves: e.g. custom
+                icons, animations, our own distinct branding.</li>
+                <li>Bringing focus back to our core goal: organize, schedule and commit to
+                a training discipline for a healthier life.</li>
+                <li>An app we can start using ASAP to start improving our training + its
+                scheduling, and build consistent habits.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The trade-off</p>
+              <ul>
+                <li>Opting for a minimalist, stripped-down design &mdash; instead of
+                investing time I didn&rsquo;t have to learn how to design advanced UI.</li>
+                <li>Adopting minimalism as design philosophy &mdash; a deliberate,
+                potentially permanent choice to keep focus on core actions.</li>
+                <li>A design with room for growth &mdash; leaving the door open for
+                revising and improvement.</li>
+                <li>Accepted shipping this version instead of waiting for a finished
+                design, despite wanting the app to look good immediately.</li>
+                <li>Re-framed the decision around iteration: continuous improvement over
+                upfront perfection.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The result</p>
+              <ul>
+                <li>An app released approx. 3 weeks earlier, used daily by both of us to
+                schedule and organize our training.</li>
+                <li>Core actions that are intuitive and easy to navigate.</li>
+                <li>An enjoyable UX, devoid of clutter and visual noise thanks to a clean
+                and minimalist design.</li>
+                <li>It allowed us to spot fast several functions that were either missing
+                or clumsy: e.g. removing a weekly progress feature that cluttered the
+                homepage and cluttered the user with unnecessary data.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>Manual entry over automatic tracking &rarr; making training intentional</h3>
+          <p>Neither of us wear smartwatches. We both wear a smart ring, but these
+          don&rsquo;t track training beyond daily steps, which isn&rsquo;t our objective.
+          So I chose against wearable integration &mdash; logging by hand means we
+          prioritize a mindful and deliberate approach towards our training. The planning
+          element of our week turned out to be crucial to create and encourage discipline.
+          When we tried without it, both of us ended up in a reactive cycle of random
+          training sessions, training whenever we felt like it or had the time. It made for
+          a hectic training plan, born out of availability instead of intentional planning.
+          This completely affected our overall attitude towards it. Manual entry made every
+          workout intentional by being thoughtfully planned. It gave us a feeling of
+          empowerment, especially at a time where tech can take over a lot of the
+          decision-making we do everyday. It also gave us a higher sense of satisfaction
+          when looking back on completed training at the end of the week.</p>
+          <div class="decision-parts">
+            <div>
+              <p class="cs-key">What was needed</p>
+              <ul>
+                <li>Deliberate planning &mdash; encouraging an intentional approach to our
+                training.</li>
+                <li>Logging workouts by hand instead of relying on wearable
+                integration.</li>
+                <li>The ability to plan our week to encourage discipline in our fitness
+                approach.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The trade-off</p>
+              <ul>
+                <li>No automation means a bit more time spent planning &mdash; we could
+                have opted to integrate an AI assistant to remove some weight that would
+                come from the decision-making process.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The result</p>
+              <ul>
+                <li>A feeling of empowerment: when we see or feel progress, we know
+                it&rsquo;s the direct result of our efforts.</li>
+                <li>Added encouragement: we are in control of our training, we can see how
+                our decisions impact our health and training. This gives us a stronger
+                sense of ownership.</li>
+                <li>A higher sense of satisfaction when looking back on completed training
+                sessions at the end of the week.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>Built for two users, not two million &rarr; focusing on our objectives</h3>
+          <p>Considering that the product was for our personal use and for my case study, I
+          narrowed down the user market to the two of us only. In this particular case, we
+          didn&rsquo;t need to spend our time and resources analyzing a wider market for
+          which the app wasn&rsquo;t built.</p>
+          <p>I decided against creating an onboarding flow. Since I was creating a bespoke
+          app for ourselves, it would be more efficient to focus on intuitive actions for
+          us to jump in and start our training organization right away.</p>
+          <p>This meant that we were able to ship faster without compromising on user
+          research, since we had access to the main two every day for testing and feedback
+          gathering. The data samples being smaller to analyze, we were able to fast-track
+          the product from ideas to prototype.</p>
+          <p>The duality between being the product manager and the user at the same time
+          put me in the interesting position of being both the observant and the observed,
+          regularly switching perspectives and advocacy.</p>
+          <div class="decision-parts">
+            <div>
+              <p class="cs-key">What was needed</p>
+              <ul>
+                <li>A bespoke and narrowed-down user research.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The trade-off</p>
+              <ul>
+                <li>No onboarding flow for the app.</li>
+                <li>[For future app updates: smaller data samples available for analysis
+                compared to commercial products that require large samples of user
+                data.]</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The result</p>
+              <ul>
+                <li>Optimized and intuitive user actions on the app.</li>
+                <li>Bespoke product, designed for 2 users and their exact needs.</li>
+                <li>Fast-tracked product: moving faster from ideas to prototype.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h3>Keeping the goal and training block layers for the next version &rarr; focusing on workout features and weekly scheduling</h3>
+          <p>So far, we had kept one habit throughout the initial process: organizing
+          training by blocks (between 3&ndash;4 week blocks), and defining set weekly goals
+          per block. We used a recap on the Excel sheet to list, schedule and track the
+          weekly goals by the following metrics:</p>
+          <ul>
+            <li>type of workouts (run, swim, climb, etc.)</li>
+            <li>number of workouts to complete any given week per block</li>
+            <li>tracking the scheduling of workouts (e.g. 2 out of 3 completed, 1 out of 4,
+            etc.)</li>
+            <li>live workout status (completed or missed)</li>
+          </ul>
+          <p>We used this feature regularly. It was an added layer of structure preceding
+          the actual assignment of a workout to a date.</p>
+          <p>However, we jointly decided not to bring this feature forward in the app
+          design. Three reasons behind the decision: feasibility, complexity/cost, and
+          urgency.</p>
+          <div class="decision-parts">
+            <div>
+              <p class="cs-key">What was needed</p>
+              <ul>
+                <li>An app we could start using right away to start scheduling training
+                immediately.</li>
+                <li>An MVP that could hold the majority of key features of the Excel
+                system, without this feature.</li>
+                <li>An easier structure to implement so that we could start using, testing,
+                and iterating within a short time-frame.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The trade-off</p>
+              <ul>
+                <li>Removing the existing, regularly-used habit of organizing training by
+                block.</li>
+                <li>Removing for now the added layer of planning before individual workouts
+                were assigned to dates.</li>
+                <li>Focused on an MVP that could function without it.</li>
+                <li>The block structure was more complex to implement, so we deferred it to
+                the future next app version.</li>
+                <li>Building it would have delayed launch by several weeks.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">The result</p>
+              <ul>
+                <li>A clear and simple structure for organizing training: everything happens
+                on the homepage, scheduling is done via the weekly view.</li>
+                <li>We were able to use the app within 3 weeks.</li>
+                <li>This allowed us to spot key changes that needed to happen right away.
+                E.g. using different font/text in the weekly schedule to separate training
+                from rest days.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      </div>
+
+      <div class="cs-panel" id="panel-problem">
+
+      <!-- 03 -->
+      <section class="cs-section" id="problem">
+        <h2><span class="n">03</span> The Problem: 5 tools, 0 picture</h2>
+        <p>My partner and I train for several sports and physical abilities in any given
+        week. Exercise is a key part of leading a healthy life, but typical challenges
+        include staying consistent, falling back on discipline when motivation flags, and
+        staying organized in your training.</p>
+        <p>Up until now, we were organizing and tracking our training across 5 different
+        platforms:</p>
+        <ul>
+          <li>Excel spreadsheet on Google Drive</li>
+          <li>Gmail calendar</li>
+          <li>iPhone notes</li>
+          <li>iPhone timer</li>
+          <li>Pen &amp; paper</li>
+        </ul>
+
+        <div class="feature-grid">
+          <figure>
+            <div class="frame"><img src="assets/ganbare/tool-1-spreadsheet.jpg" alt="Excel training spreadsheet with a weekly plan and goals"></div>
+            <figcaption>
+              <b>1 &middot; Excel spreadsheet</b>
+              Weekly plan &amp; scheduling:
+              <ul class="plus-list">
+                <li>Scheduling workouts.</li>
+                <li>Tracking when each session happens.</li>
+                <li>Setting a weekly goal.</li>
+                <li>Manual weekly rebuild.</li>
+                <li>Disconnected from workout plans, timer, notes.</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="assets/ganbare/tool-2-calendar-v2.jpg" alt="Gmail calendar month view for April 2026 with training blocks, rest days and events"></div>
+            <figcaption>
+              <b>2 &middot; Gmail calendar</b>
+              Scheduling workouts:
+              <ul class="plus-list">
+                <li>Assigning workouts to dates.</li>
+                <li>High-level view over extended period of time: helps to see when was the
+                last time a type of session was done.</li>
+                <li>Helping avoid recovery clashes.</li>
+                <li>The only clear organized view we had.</li>
+                <li>No workout details.</li>
+              </ul>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="tool-grid">
+          <figure>
+            <div class="frame"><img src="assets/ganbare/tool-3-timer.jpg" alt="iPhone timer showing interval laps"></div>
+            <figcaption>
+              <b>3 &middot; iPhone timer</b>
+              Tracking duration:
+              <ul class="plus-list">
+                <li>Interval reps.</li>
+                <li>Duration-based exercises (e.g. plank).</li>
+                <li>Tracked outside any record of the session.</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="notes-row">
+              <img src="assets/ganbare/tool-4-notes-a.jpg" alt="iPhone Notes: core workout list">
+              <img src="assets/ganbare/tool-4-notes-b.jpg" alt="iPhone Notes: lower body workout list">
+              <img src="assets/ganbare/tool-4-notes-c.jpg" alt="iPhone Notes: upper body workout list">
+            </div>
+            <figcaption>
+              <b>4 &middot; iPhone notes</b>
+              Detailing exercises within workouts:
+              <ul class="plus-list">
+                <li>For workouts outside the home.</li>
+                <li>Assigning and writing down exercises in a workout.</li>
+                <li>Tracking reps.</li>
+                <li>Separating workouts by muscle/body area groups.</li>
+                <li>Disconnected from the schedule.</li>
+                <li>Messy to update during a workout.</li>
+              </ul>
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="assets/ganbare/tool-5-pen-paper.jpg" alt="Handwritten workout notes on lined paper"></div>
+            <figcaption>
+              <b>5 &middot; Pen &amp; paper</b>
+              Tracking reps in home workouts:
+              <ul class="plus-list">
+                <li>Making sure reps are not forgotten.</li>
+                <li>Quick notes jotted down every session.</li>
+                <li>Not formatted for archiving.</li>
+              </ul>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p>Multiple sports, many environments, different muscle targets, busy schedules,
+        lots of tools, no centralized view. We had reached for whatever tool fit each job
+        &mdash; and lost the ability to see any of it together.</p>
+        <p>The whole process felt messy, dispersed and unsustainable long term. It kept us
+        going for a while, but we realized it was a temporary solution that wouldn&rsquo;t
+        support our long term goals.</p>
+        <p>My partner shared the same process for his training and faced similar
+        difficulties in his training organization.</p>
+        <p>Once we committed to structured training across multiple sports, we needed a
+        tool to stay organized but more importantly, committed. We wanted:</p>
+        <ul>
+          <li>A structure that would hold us accountable, not just looked organized.</li>
+          <li>A way to keep tabs on our progress and help us manage our week between
+          training, recovery days and our favorite sport activities.</li>
+          <li>The ability to plan sessions easily, create and log workouts, time intervals,
+          record sets and reps, see the week at a glance, all in one place.</li>
+        </ul>
+        <p>We combined our skills and knowledge to solve our problem and created Ganbare:
+        the app to help us achieve our fitness goals, support our exercise habits and honor
+        our long-term commitments to a healthy life.</p>
+      </section>
+
+      </div>
+
+      <div class="cs-panel" id="panel-process">
+
+      <!-- 04 -->
+      <section class="cs-section" id="why">
+        <h2><span class="n">04</span> Why build Ganbare</h2>
+        <p>We had our mutual reasons to build an app together.</p>
+        <p>We are on this big health journey of building a healthier lifestyle through our
+        fitness: making healthy habits a core element of a good life quality as we age.</p>
+        <p>To achieve that goal, we needed a tool that could:</p>
+        <ul>
+          <li>Help us commit to our training goals through its design and features.</li>
+          <li>Encourage us to stick to new, healthy habits.</li>
+          <li>Bring consistency within our training.</li>
+          <li>Materialize abstract goals through quantifiable data.</li>
+          <li>Condense the essential features of our initial system in one place.</li>
+        </ul>
+
+        <div class="callout">
+          <h3>Why an app?</h3>
+          <p>I use my smartphone everyday. The device is a big part of my routine since it
+          helps me perform a majority of my daily tasks. My partner also uses his phone in
+          the same capacity. On top of that, we always take our phones wherever we train,
+          whichever the activity. Since it was already a regular feature within our
+          training, we wanted to use that continuity.</p>
+          <p>It made sense for the solution to our problem to live in our phones, hence an
+          app. We both already had the habit of using our phones engrained in our daily
+          lives, so we built onto this habit to insert Ganbare in our routine.</p>
+        </div>
+
+        <div class="callout">
+          <h3>What each of us wanted to take away from the process</h3>
+          <div class="feature-grid">
+            <div>
+              <p class="cs-key">Juliette &mdash; Product Lead</p>
+              <ul>
+                <li>Have a training app ready to use, on my phone and tailored to my needs
+                and goals.</li>
+                <li>Work through the product management process &mdash; start to finish.</li>
+                <li>Learn how to use product tools e.g. Figma for design, Claude AI, VS
+                Code, and GitHub: take on the role of prompter, iterator and reviewer
+                within the process.</li>
+                <li>Test knowledge gained from completing UX design + product management
+                courses.</li>
+                <li>Learn how to use AI in the process, experience its power, identify its
+                limitations.</li>
+                <li>Find my place within the AI product landscape: how can I work with it,
+                what can it do, where is it lacking and where do I come in.</li>
+                <li>Have a ready-to-share portfolio and case study to increase profile
+                visibility in interviews.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="cs-key">Partner &mdash; Backend &amp; Software Development</p>
+              <ul>
+                <li>Learn about the app building process.</li>
+                <li>Have a bespoke app in his phone that supports his training effort.</li>
+                <li>Learn how to vibe-code using an AI agent like Claude.</li>
+                <li>Build a full app with htmx + Golang.</li>
+                <li>Learn how to use Figma.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="cs-section" id="process">
+        <h2><span class="n">05</span> The thought process</h2>
+        <p>I drew from the product design framework to guide my next steps: these are
+        divided in the following 4 sections.</p>
+        <ul>
+          <li>Empathize &mdash; Living the problem</li>
+          <li>Define &mdash; Scoping the MVP</li>
+          <li>Ideate &mdash; Sketch, flow, then build</li>
+          <li>Prototype &amp; Test &mdash; Ship it into our own week</li>
+        </ul>
+
+        <div class="phase" id="empathize">
+          <h3><span class="n">I</span> Empathize &mdash; Living the problem</h3>
+          <p>Time for user research. I needed to understand the problems we faced as users.
+          What was the current situation? What problems did we keep facing? What did we want
+          vs need?</p>
+          <p>I spent 2 months using all 5 tools in different locations to flesh out their
+          advantages and limitations. How the process made me feel overall and in details.
+          The experience and observations I made guided the design of the replacement
+          product.</p>
+          <p>Questions I needed answers to included:</p>
+          <ul>
+            <li>What are our respective user stories here?</li>
+            <li>What&rsquo;s the problem statement?</li>
+          </ul>
+          <div class="callout callout--dashed">
+            <p class="cs-key">Key findings</p>
+            <ul>
+              <li><strong>Error prone:</strong> any change within the schedule (be it type of
+              training or dates) meant several documents needed to be updated consistently and
+              manually: opening the door wide open to errors and omissions.</li>
+              <li><strong>Tedious:</strong> updating all the documents required time and
+              created frustration. Resulting in feeling a strong sense of wasting time for
+              both users.</li>
+              <li><strong>Wasteful</strong> &mdash; several disadvantages of loose papers:
+                <ul>
+                  <li>Tracking over time is impossible if the data isn&rsquo;t saved in one
+                  place. We had no way to verify progress or decline in training.</li>
+                  <li>Waste of paper &amp; easy to lose floating papers.</li>
+                </ul>
+              </li>
+              <li><strong>Losing workout flow:</strong> it was difficult to update or locate a
+              specific exercise on phone notes when fully immersed in a workout. It broke the
+              workout flow.</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <h3>Accessible Design</h3>
+            <p>One key learning that really stood out when studying for the Google UX Design
+            course was including principles and frameworks of accessibility within the
+            product management process.</p>
+            <p>We were designing for 2 users only (us), and neither user has a disability to
+            consider when creating the app. Our user research and usability studies were
+            limited to a small sample of users as well. Nevertheless, I wanted to think
+            about accessibility in design as a key part of the app process. Part of my work
+            towards becoming a product manager is to consider accessibility as a fundamental
+            element, making the design thinking framework.</p>
+            <p>I briefly tested some assistive technologies while going through the course,
+            but realized while creating Ganbare that there are many aspects I&rsquo;m not
+            taking into account yet when designing for accessibility. The Google UX Design
+            course was a great introduction to principles of UX and accessibility, it
+            covered the foundations well. But there is a lot more I must learn about, which
+            will happen through being exposed to more products, and by virtue of getting
+            stuck in more product projects.</p>
+          </div>
+        </div>
+
+        <div class="phase" id="define">
+          <h3><span class="n">II</span> Define &mdash; Scoping the MVP</h3>
+          <div class="story-grid">
+            <div class="story">
+              <p class="cs-key">User story 1</p>
+              <p>As a person who wants to improve their fitness, I want to plan my training
+              conscientiously so that I can live a long and healthy life.</p>
+            </div>
+            <div class="story">
+              <p class="cs-key">User story 2</p>
+              <p>As an outdoor enthusiast, I want to make sure I&rsquo;m doing the necessary
+              physio work to strengthen my muscles, so that I can enjoy the activities I
+              love without injuring myself.</p>
+            </div>
+            <div class="story">
+              <p class="cs-key">Problem statement 1</p>
+              <p>Juliette is an active person who needs a better system to organize her
+              weekly training because she wants to keep enjoying doing different
+              sports.</p>
+            </div>
+            <div class="story">
+              <p class="cs-key">Problem statement 2</p>
+              <p>User 2 is a busy professional who needs an enjoyable scheduling system to
+              plan his workouts because he wants an experience that positively reinforces
+              habits.</p>
+            </div>
+          </div>
+          <p>This framework helped us identify 4 core actions the app needed to perform:</p>
+          <ol>
+            <li>Schedule all training in one weekly view with today&rsquo;s reminder.</li>
+            <li>Build and save workouts and exercises (all bespoke).</li>
+            <li>Track and log a live workout and its metrics.</li>
+            <li>Access a library of all created workouts and exercises with the ability to
+            edit it.</li>
+          </ol>
+          <div class="callout callout--dashed">
+            <p class="cs-key">Key findings</p>
+            <ul>
+              <li><strong>Centralize our tools:</strong> one place for everything, one tool to
+              schedule and track it all. With the ability to add a set of details to
+              distinguish workouts from one another: by filter categories, and metrics nature
+              (exercise or session based).</li>
+            </ul>
+          </div>
+          <p>I also confirmed the user problems:</p>
+          <ul>
+            <li>We were using too many tools for one set of goals, which could be managed in
+            1 location only.</li>
+            <li>The first tools we used were completely disconnected from one another.</li>
+            <li>We kept losing time updating all the documents every time a change needed to
+            be made.</li>
+          </ul>
+        </div>
+
+        <div class="phase" id="ideate">
+          <h3><span class="n">III</span> Ideate &mdash; Sketch, flow, then build</h3>
+          <ul>
+            <li><strong>Competitive audit:</strong> conducted a short audit on a select
+            sample of competitors&rsquo; offers [Strava, Crimpd, Nike Training Club, Apple
+            Health] to see what designs were currently trending. Looked at their offers, how
+            they were structured. Wrote down what worked well, what didn&rsquo;t and audited
+            my current ideas based on my evaluations.</li>
+            <li><strong>Lo-Fi design:</strong> sketched out with pen and paper my initial
+            ideas: drew low-fi wireframes to establish initial user flows and the
+            information architecture of the app. Got all core flows on paper.</li>
+            <li><strong>Iterated with AI on POC:</strong> moved to VS Code, using Claude AI
+            to bring initial designs to life, going through several iterations.</li>
+            <li><strong>Move to Figma:</strong> recreated the wireframes on Figma so that I
+            could keep on iterating and create interactions.</li>
+            <li><strong>Iterate on Figma:</strong> both of us tested, iterated and reviewed
+            the wireframes before moving them to dev.</li>
+          </ul>
+
+          <div class="flow">
+            <div>
+              <h4>Pen + paper</h4>
+              <p>Sketch ideas quickly and freely, draw wireframes.</p>
+            </div>
+            <div>
+              <h4>VS Code &amp; Claude</h4>
+              <p>Create low-fi wireframes with prompts based on pen &amp; paper work.
+              Iterate and review designs.</p>
+            </div>
+            <div>
+              <h4>Figma</h4>
+              <p>Moving low-fi wireframes into Figma to test interactivity &amp; continue
+              iterating.</p>
+            </div>
+          </div>
+
+          <figure class="wide">
+            <img src="assets/ganbare/ideate-kanban-v2.jpg" alt="Trello board for Ganbare with columns for Feature Discovery, Designing, Design Review, Ready for Dev and Dev in Progress, cards tagged UX, UI and MVP">
+            <figcaption>The Kanban board [Trello] to keep track of all tickets and assigned
+            tasks, reviewing and updating the board every day.</figcaption>
+          </figure>
+
+          <div class="feature-grid">
+            <figure>
+              <div class="notes-row two">
+                <img src="assets/ganbare/ideate-lofi-a.jpg" alt="Low-fidelity wireframe of the Ganbare homepage showing today's day, scheduled workouts and the week list">
+                <img src="assets/ganbare/ideate-lofi-b.jpg" alt="Low-fidelity wireframe of a Push Day workout screen with sets, reps and weight fields">
+              </div>
+              <figcaption><b>Low-fi wireframes made with AI</b></figcaption>
+            </figure>
+            <figure>
+              <div class="notes-row two">
+                <img src="assets/ganbare/ideate-sketch-a.jpg" alt="Handwritten notebook page listing what the homepage needs to do, numbered one to six">
+                <img src="assets/ganbare/ideate-sketch-b.jpg" alt="Notebook page with hand-drawn lo-fi wireframes of the homepage and weekly view">
+              </div>
+              <figcaption><b>Sketching with pen &amp; paper</b></figcaption>
+            </figure>
+          </div>
+
+          <h3>Using AI in my ideation process</h3>
+          <p>I used Claude as an AI agent through the iteration process, focusing on the
+          quality of my prompting, adopting a position of reviewer. I had done my own user
+          research before introducing Claude in my work flow. I had observed what we needed
+          as users, identified our pain points, confirmed what our user problems were.</p>
+          <p>I certainly found AI very helpful: I was able to iterate designs despite my
+          lack of knowledge in visual design, I could focus on my ideas and bring them to
+          life easily. I also came across its limitations such as inaccuracy for example. On
+          top of that, it couldn&rsquo;t replace my own experience, taste and appreciation
+          of design.</p>
+          <p>I started working with AI knowing that if I wasn&rsquo;t mindful, any work
+          produced with it would sound like any other product owner and UX designer using
+          AI. The shortcut is tempting: wireframes and iterations can end up looking
+          extremely polished and ready for a sped up release. However, this process
+          doesn&rsquo;t replace the results of going through the UX design framework.</p>
+          <p>I agree with experts who forecast a decline in product quality created with AI
+          only: the next few years will confirm the need for polyvalent product managers who
+          have expertise based on human experience.</p>
+          <div class="callout callout--dashed">
+            <p class="cs-key">Key findings</p>
+            <ul>
+              <li><strong>AI&rsquo;s impact on product:</strong> AI is changing UX design and
+              how designers work, becoming prompters, iterators and reviewers.</li>
+              <li><strong>Design in Code:</strong> using VS Code and Claude to build initial
+              designs &amp; iterate is more efficient than starting designs from scratch on
+              Figma.</li>
+              <li><strong>UI kit first:</strong> start with building a material design UI kit
+              first on Figma to create the foundational components that will be repeated
+              across many wireframes and user flows: so that any changes made in the UI kit
+              will carry across all instances.</li>
+              <li><strong>Naming consistency:</strong> stay consistent in naming conventions
+              across Figma frames.</li>
+              <li><strong>Beyond Trello:</strong> Trello feels limiting. It works fine for a
+              2-user product like Ganbare and a small team. I&rsquo;ll be looking into other
+              alternatives to find something more polyvalent. Using dependency features within
+              a Kanban board would be ideal.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase" id="develop">
+          <h3><span class="n">IV</span> Develop &amp; Test &mdash; Ship it into our own week</h3>
+          <p>We launched a first structural version of Ganbare to start testing theories and
+          iterate on designs and flows. The app design and UI were not finished. I started
+          using the app, treating each test as a usability study. I spotted gaps and areas
+          for improvement, then implemented updates such as this one:</p>
+          <p>E.g. when editing a saved workout in the library, the changes only apply going
+          forward. Any instances of that workout already scheduled, completed, or logged
+          before the edit remain unchanged. Previously, altering a workout saved in the
+          library would change all existing instances past, present and future, tampering
+          with the data entered.</p>
+          <p>Every real training week was a usability test for us to identify friction.</p>
+          <div class="callout callout--dashed">
+            <p class="cs-key">Key findings</p>
+            <ul>
+              <li><strong>Ship early:</strong> getting the app out live as soon as possible
+              allowed us to start testing immediately our interactions. We identified within
+              the first two app uses areas in need of improvement that we hadn&rsquo;t
+              spotted while checking the user flows. Test it to improve it.</li>
+              <li><strong>Product logs:</strong> at the end of every milestone, writing down
+              a short product log helps two ways:
+                <ul>
+                  <li><strong>Reflection:</strong> helps with reactive thinking. Look back on
+                  the day, pull out of the proactive mindset and take stock of learnings and
+                  failures to inform future decisions and help situate yourself in your work
+                  the next day.</li>
+                  <li><strong>Asynchronous communications</strong> (documenting and recording
+                  info) is a phenomenal tool in any work settings &mdash; deeper-focus,
+                  better collaboration and more inclusive.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="cs-section" id="results">
+        <h2><span class="n">06</span> Results &amp; Impacts</h2>
+        <p><strong>So here we are. Ganbare. Several needs, one deed.</strong></p>
+        <p>My goal was to design an app that would support our objectives of training and
+        help organize ourselves towards a healthier lifestyle. We now have an app that makes
+        it easier for us to structure our training and manage our week. The greatest
+        improvement so far, is that we no longer have to update 2 separate documents to
+        manage our training and track metrics with another 3 tools.</p>
+
+        <p class="cs-key">App global metrics</p>
+        <ul>
+          <li>6 weeks in continuous use.</li>
+          <li>Time to plan a week and schedule workouts now reduced to under 5 minutes
+          versus 30 minutes before.</li>
+          <li>Transitioned from using 5 tools to 1: no more spreadsheet, timer, pen &amp;
+          paper, digital notes, calendar &mdash; just one app, all information centralized,
+          wherever we train.</li>
+          <li>Simple UX &mdash; no fuss, no unnecessary features.</li>
+        </ul>
+
+        <blockquote>
+          One of the big values the product brings for me is that it&rsquo;s easier for me
+          to stay consistent with my exercise if I have my planned sessions written down
+          somewhere, and have a weekly goal I&rsquo;m trying to hit.
+          <cite>My partner&rsquo;s testimony on Ganbare</cite>
+        </blockquote>
+
+        <p class="cs-key">Impacts on my product process &amp; general learnings</p>
+        <ul>
+          <li>Figma to create and iterate on designs, keeping on learning the basics.</li>
+          <li>Claude AI.</li>
+          <li>Basic use of GitHub.</li>
+          <li>VS Code.</li>
+          <li>Design Thinking Framework.</li>
+          <li>Agile methodologies such as Kanban.</li>
+          <li>Asynchronous communications.</li>
+        </ul>
+      </section>
+
+      <!-- 07 -->
+      <section class="cs-section" id="future">
+        <h2><span class="n">07</span> The Future of Ganbare</h2>
+        <p>The MVP is live and in use. Now, I&rsquo;m looking ahead at the next steps I want
+        to take to keep on improving the app.</p>
+
+        <div class="phase" id="next-features">
+          <h3>Next and potential app features</h3>
+          <p>I started with a first version that supports a solid structure and has room for
+          growth. Scoping out what the next version of Ganbare needs to become include the
+          potential following features in priority order:</p>
+
+          <div class="callout">
+            <h3>Training block &amp; custom goals settings</h3>
+            <p><em>(Refresher: a training block is a training structure made of consecutive
+            weeks, the exact duration set by the user, to plan and schedule training over an
+            extended period of time. The training block can focus on a specific goal
+            (endurance, core strength etc.) and be considered as part of an overall strategy.
+            This feature was part of the initial process before the app release.)</em></p>
+            <p>Why do we want to implement a training block structure in the next version and
+            have custom goal settings option? Because it will give us as users the following
+            benefits:</p>
+            <ul>
+              <li><strong>Sense of completion:</strong> creating a training block;
+              intentionally writing down our goals for each training block; ticking off
+              workouts one-by-one on the overview list as we went; and viewing at the end of
+              week/block how many workouts we had completed out of X scheduled. All these
+              actions will give us a great feeling of achievement, encouraging us to keep
+              going, chase that positivity.</li>
+              <li><strong>Scheduling support:</strong> it will be incredibly helpful to look
+              at the listed block workouts when organizing the week ahead to assign workouts
+              to dates. Since we train for several performance outcomes and do different
+              sports, this feature will help us avoid training clashes [e.g. scheduling
+              workouts targeting similar body areas too close to one another, which would
+              result in back-to-back training, over-straining muscles and delaying
+              recovery].</li>
+              <li><strong>Training structure:</strong> the block training feature will take us
+              beyond the week-by-week approach. It will allow us to look at training
+              holistically. What if we can start looking at our training over months,
+              trimesters, instead of individual weeks? Taking this approach to our training
+              naturally will encourage us towards our commitment objectives, expand our
+              respective comfort zones a little further. No longer looking at a single week,
+              but at a longer timeline: creating long-lasting habits.</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <h3>Tracking progress &amp; trends</h3>
+            <p>Why do we want to be able to save the data of each workout completed in the next
+            app version? This feature will allow us to obtain essential data and inform our
+            training steps:</p>
+            <ul>
+              <li><strong>Track data over time to measure progress:</strong> this feature will
+              show us undeniable data to inform any future training decision. This is
+              important for us on the long term in our fitness journey. My understanding is
+              that progress in fitness and muscle resilience is achieved by adding a
+              progressive load to your efforts. For example, increasing weights in an exercise
+              over time, adding more reps, extending duration. Being able to track progress,
+              plateaus, decline in training will be essential to help us figure out whether
+              our fitness is improving or not. Progress tracking will in turn help us
+              understand what we need to change to get back on track if we took an accidental
+              detour on our training journey.</li>
+              <li><strong>Viewing our overall trends:</strong> extracting information to
+              inform future decisions, how many hours we worked out, how much weight
+              we&rsquo;ve added to one exercise over time, how many sessions we spent on
+              training upper body/lower body/strength and so on. This feature will support our
+              motivation to keep training and believe in the process. We both found that
+              consistency is key to our training. Change and progress happen over time,
+              it&rsquo;s very hard to stay motivated when efforts don&rsquo;t amount to a
+              visible result yet. Being able to quantify our motivation in numbers will be a
+              motivator for long-term commitment.</li>
+            </ul>
+            <p>This feature will add a degree of complexity for my work: I&rsquo;ll need to be
+            able to recognize patterns in the data, identify what they mean and make
+            recommendations based on these. I don&rsquo;t know enough about this aspect of
+            training yet, and can anticipate I will be doing research and reaching out to my
+            network to learn more about data.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Energy barometer</h3>
+            <p>What will an energy barometer bring to the Ganbare experience?</p>
+            <ul>
+              <li><strong>Mindful approach to our training plan:</strong> it will bring
+              mindfulness in our approach to working out, encourage us to make a habit of
+              paying attention to how our mental health. How it impacts our workout and vice
+              versa. This feature was my partner&rsquo;s suggestion for the next app version.
+              He is thinking about this feature specifically for post-workout
+              evaluations.</li>
+              <li><strong>Pattern detection in energy levels:</strong> this will be an
+              interesting sample of data to gather over time, perhaps enabling me to pick up
+              some unseen patterns that could be a direct result of over-training or
+              over-loading muscle groups. Apple Health is doing something similar where the
+              user can drag a cursor alongside a horizontal bar to evaluate their present
+              emotional state. I&rsquo;m leaning towards adding this feature for a weekly
+              energy assessment too.</li>
+              <li><strong>Interaction with the training block feature:</strong> I had noticed
+              in the first couple of months of our initial training process that I was often
+              left deflated towards the end of a training block made of 3 to 4 weeks. Pairing
+              the training block and energy barometer features will help us gather insights on
+              how exactly is our training influencing our energy. It could confirm whether I
+              need to decrease weights on the last leg of a 4 week training block if I keep on
+              feeling drained towards the end of a training block. Overall, help me plan my
+              training block accordingly and gather insights over a longer period of
+              time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase" id="ui-design">
+          <h3>User Interface &amp; Design Concepts</h3>
+
+          <div class="callout">
+            <h3>The challenge</h3>
+            <p><strong>Engagement.</strong> When I started working on the user interface (UI)
+            side of the app, one question popped up first. How do I make this app visually
+            interesting to encourage engagement? Arguably, the interactions could be
+            described as mundane: organization and scheduling.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Design philosophy</h3>
+            <p><strong>Simplicity.</strong> The current user interface seeks to reflect
+            simplicity, by design and necessity. It&rsquo;s the result of a product decision
+            and trade-off I made early on.</p>
+            <p><strong>Kanso &amp; yohaku.</strong> Since I had to keep the UI simple, I
+            sought inspiration in minimalist and Japanese concepts, such as <em>kanso</em>
+            [the removal of excess, the elimination of the superfluous] and <em>yohaku</em>
+            [the empty space that surrounds something] when designing the UI. I wanted the
+            app to reflect value towards the quality and importance of simple, understated
+            objects.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Process</h3>
+            <p><strong>Prototyping.</strong> I created the initial designs with VS Code and
+            Claude AI, pushing amends onto GitHub, iterating on my low-fi wireframes created
+            for each user flows.</p>
+            <p><strong>Figma.</strong> Once I was happy with what I produced, I moved into
+            Figma to create a design kit and recreate the wireframes manually.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Next version</h3>
+            <p><strong>Iteration.</strong> I do want to improve the UI for the next app
+            version. I would like to stick to a minimalist design, but I&rsquo;m open to
+            changes as my partner and I keep on learning how to develop designs on Figma. The
+            more I keep using the software, the more I&rsquo;m learning about UI, the more
+            possibilities are opening up.</p>
+
+            <figure class="wide figure--portrait">
+              <img src="assets/ganbare/ui-concept-homepage.jpg" alt="Two homepage concepts for the next version of Ganbare, shown in light and dark themes, each with a mosaic background of colored blocks">
+              <figcaption><b>Homepage concepts &mdash; next version</b>Designed by my
+              partner; I consulted from a UX perspective.</figcaption>
+            </figure>
+
+            <p><strong>Delegation.</strong> While we were discussing the app&rsquo;s future
+            and improvements we wanted to make on the UI, my partner asked to take on
+            designing a few options for fun. He wanted to learn how to design UI on
+            VS Code/Claude/Figma. Since he is both visually talented and artistic, it made
+            sense to delegate this to him.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Feedback</h3>
+            <p>He created a few iterations of the homepage and shared the designs with me. We
+            went through a couple of back and forth exchanges, and I shared my feedback.</p>
+            <p><strong>Contrast.</strong> One version had a color scheme that made it
+            difficult to distinguish today&rsquo;s scheduled activities from the
+            background.</p>
+            <p><strong>Visual hierarchy.</strong> The start button under &ldquo;Schedule for
+            Today&rdquo; took over its section, taking the user&rsquo;s eye away from the
+            workout information.</p>
+            <p><strong>Accessibility.</strong> An earlier version of this UI didn&rsquo;t show
+            patterns within the colorful blocks. I noted the need to add patterns to help
+            distinguish activities from one another. Colors only were not enough to visually
+            distinguish one workout from another &mdash; beyond the text itself. While both
+            current users don&rsquo;t have a visual impairment, it didn&rsquo;t exclude the
+            possibility that we might one day share the app with friends &amp; family who
+            would benefit from an accessible UI.</p>
+          </div>
+
+          <div class="callout">
+            <h3>The mosaic</h3>
+            <p><strong>Meaning.</strong> The mosaic background represents the overall effort
+            put in by us as users towards our health goals. Each colorful block represents a
+            completed training session, and overall, the time and effort we dedicated toward
+            their training.</p>
+            <p><strong>Bigger picture.</strong> Looking at the mosaic is looking at the
+            bigger picture: every training session we did doesn&rsquo;t exist just as a
+            lonely occurrence, gone and dusted once completed. It is part of a bigger goal
+            and the mosaic is a tangible proof of it.</p>
+            <p><strong>Long-term vision.</strong> This design helps us envision our training
+            as a long-term project, creating a direction to work towards. Not just metrics or
+            trends that only exist in the moment they are looked over.</p>
+            <p><strong>Lego inspiration.</strong> My partner drew inspiration from Lego. Each
+            piece just looks like a lonely piece on its own, but stacked up, creates a whole
+            world, a composition made possible by each individual piece added.</p>
+            <p><strong>Block training.</strong> This design also strongly connects with one
+            of the key features we&rsquo;re looking at integrating back in the next version:
+            the block training feature.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section class="cs-section" id="reflection">
+        <h2><span class="n">08</span> Reflection</h2>
+
+        <div class="phase">
+          <h3 class="q">What would I do differently, knowing what I do now?</h3>
+
+          <div class="callout">
+            <h3>Advocate for keeping the training-block feature in the MVP</h3>
+            <p>My initial low-fi sketches included the feature. I had planned to include the
+            block structure into the MVP. My partner advocated for a faster app release, and
+            the training block feature was incompatible with this objective. After discussion,
+            I agreed to prioritize fast-tracking the app release. It did allow us to start
+            building good training habits fast, and identify amends needed. But fast-forward a
+            couple of weeks post-release, we individually noted that we were both missing this
+            feature. Especially when working on scheduling our training ahead of the week. It
+            wasn&rsquo;t essential to our training organization. But we had ended up with a
+            feature that turned out to be the one we enjoyed using the most in the
+            process.</p>
+            <p>If I were to create the app again, with the same angle of improving an existing
+            process into a different format, I would ask myself these two questions:</p>
+            <ul>
+              <li>What feature(s) am I enjoying the most in the current set-up?</li>
+              <li>How different would the user experience be if I didn&rsquo;t include this
+              feature in the next system?</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <h3>Improve my Claude/VS Code iterative design process</h3>
+            <p>I had split the iterations and VS Code files by core action flows: homepage,
+            library, workout builder, live workout. I thought it would be the best way to
+            divide the work, especially for iterating purposes. I found that using AI to
+            vibe-code on VS Code can be a fair bit clunky when making any changes on the
+            wireframes. The process is not as interactive and smooth as Figma, changes can get
+            lost in the myriad of frames, and the platform itself isn&rsquo;t optimal to get a
+            good overall view of the whole flow. I would approach the iterative process
+            differently by dividing the core action in sub-sections, each with its own
+            file.</p>
+            <p>For example: [homepage &rarr; Weekly Schedule &rarr; Edit flow], as opposed to
+            having one omnipotent file where everything happens.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Source a Kanban board better suited for my needs</h3>
+            <p>Trello was my first port of call, since I was familiar with the tool and it had
+            a free plan, I managed the product phases there. One limitation I came across was
+            the lack of dependency-setting. I would have liked to be able to connect tickets
+            together to build in redundancy and give myself more support in tracking complex
+            tasks.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <h3 class="q">What did I learn about my own PM instincts and blind spots?</h3>
+
+          <div class="callout">
+            <p class="cs-key">PM instinct n&deg;1</p>
+            <h3>Ability to think in second and third order</h3>
+            <p>The product management process helped me validate something I couldn&rsquo;t
+            quite place my finger on or articulate clearly yet.</p>
+            <p>I have a natural aptitude in evaluating a situation beyond what is
+            immediately in front of me. I can synthesize the moving parts of a complex
+            structure, important information, dependencies involved and constraints. Which
+            in turn, helps me trace it downstream to visualize stakeholder interactions or
+            potential frictions. It really comes in handy ahead of making decisions.
+            That&rsquo;s how I realized that we needed to isolate making changes in a
+            workout occurrence vs within the workout saved in the library.</p>
+          </div>
+
+          <div class="callout">
+            <p class="cs-key">PM instinct n&deg;2</p>
+            <h3>High-propensity towards empathy</h3>
+            <p>I have a natural tendency to put myself in the shoes of different
+            users/stakeholders, and it helps me understand where and sense where a path
+            creates friction or harm for them specifically.</p>
+          </div>
+
+          <p class="cs-key">Blind spots</p>
+          <p><strong>Analysis paralysis</strong> &mdash; I found it difficult at times to
+          navigate finding solutions when there were too many variables to consider and no
+          obvious one solution. The solution I found to this blind spot is trusting in the
+          iterative process of product management, as well as relying on agile
+          methodologies since they make it possible to keep improving based on everything
+          learned with each iteration.</p>
+        </div>
+
+        <div class="phase">
+          <h3 class="q">What&rsquo;s uncertain or unresolved?</h3>
+
+          <div class="callout">
+            <h3>Changing the UI</h3>
+            <p>I really like the design my partner created for a potential new app UI and
+            would like to update the current version with his design. It would make the app
+            more unique. We could add a more personable touch to our product. However,
+            I&rsquo;m not sure if it is absolutely necessary for us to update the UI in the
+            next version. There are some other features I would like to implement first.
+            Additionally, the time my partner can dedicate to Ganbare is limited so I&rsquo;m
+            currently weighing the pros and cons.</p>
+          </div>
+
+          <div class="callout">
+            <h3>Best implementation of the training block</h3>
+            <p>At this stage, I don&rsquo;t know yet how to re-introduce this feature in the
+            app, and what dependency needs to exist for the different moving parts. Do we
+            need:</p>
+            <ul>
+              <li>A stand-alone check list that:
+                <ul>
+                  <li>Lives on the homepage?</li>
+                  <li>Can be created and edited separately?</li>
+                </ul>
+              </li>
+              <li>A feature within the workout builder that gives the user the option to add
+              the workout to an overall training block?</li>
+              <li>An individual bottom navigation bar icon where the training block features
+              live?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cs-end">
+          <p class="cs-key">Special mention</p>
+          <p>To my partner who helped me bring my vision of Ganbare to life, discussed the
+          user actions with me at length, and shared his knowledge with me.</p>
+        </div>
+      </section>
+
+      </div>
+
+    </div>
+    </div><!-- /.cs-main -->
+  </main>
+  </div>
+
+  <div class="view" id="view-about" hidden>
+<main class="page">
+    <header class="page-head page-head--photo">
+      <h1>About</h1>
+      <p class="page-head__lead"> I'm interested in how products shape our daily lives. Vice versa, how we consumers shape the products being made. My goal is to
+build products through smart, intentional design, ultimately solving real human problems at a large
+scale.</p>
+      <a class="link-arrow" href="assets/cv/juliette-kuno-cv.pdf" download="Juliette Kuno - CV.pdf">Download CV <span aria-hidden="true">&darr;</span></a>
+    </header>
+
+    <div class="page-body prose">
+      <h2>Experience</h2>
+      <p>A short view of my experience — from events and account management into
+      product and UX.</p>
+
+      <div class="cv">
+        <div class="cv__row">
+          <span class="cv__year">2022 — 2024</span>
+          <div>
+            <h3>Events &amp; Community Officer, The Castles Climbing Centre</h3>
+            <p>Owned the full event lifecycle, delivering 10+ B2B and community events a
+            year for brands like Arc&rsquo;teryx and Reel Rock.</p>
+          </div>
+        </div>
+        <div class="cv__row">
+          <span class="cv__year">2018 — 2022</span>
+          <div>
+            <h3>Account Manager, The Truman Brewery</h3>
+            <p>Managed 50+ accounts end-to-end — including Netflix and Activision —
+            generating ~&pound;90k in annual venue hire revenue.</p>
+          </div>
+        </div>
+        <div class="cv__row">
+          <span class="cv__year">2017</span>
+          <div>
+            <h3>Client Coordinator, FITCH</h3>
+            <p>Client coordination at a global brand and design consultancy.</p>
+          </div>
+        </div>
+        <div class="cv__row">
+          <span class="cv__year">2011 — 2013</span>
+          <div>
+            <h3>Client Coordinator, Dallorso Conseils</h3>
+            <p>Early client coordination role, alongside undergraduate studies.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="cv-section-title">Certificates</h2>
+
+      <div class="cv">
+        <div class="cv__row">
+          <span class="cv__year">2025 — 2026</span>
+          <div>
+            <h3>Product Management Certificate, IBM</h3>
+            <p>Covered the full product lifecycle from ideation to commercialisation.
+            Case study included market and user research, strategic planning, PM methodologies such as Agile.</p>
+          </div>
+        </div>
+        <div class="cv__row">
+          <span class="cv__year">2025</span>
+          <div>
+            <h3>UX Design Certificate, Google</h3>
+            <p>Practised the full design-thinking cycle — research, ideation, Figma
+            prototyping, usability testing — with a focus on accessible, equity-led design.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="cv-section-title">Higher Education</h2>
+
+      <div class="cv">
+        <div class="cv__row">
+          <span class="cv__year">2015 — 2017</span>
+          <div>
+            <h3>MA Cultural &amp; Creative Industries, King&rsquo;s College London</h3>
+            <p>Postgraduate study in cultural and creative industries.</p>
+          </div>
+        </div>
+        <div class="cv__row">
+          <span class="cv__year">2011 — 2014</span>
+          <div>
+            <h3>BA English LLCE, Institut C. de Paris</h3>
+            <p>Undergraduate degree in English language, literature and civilisation.</p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="tags">
+        <li>Product Strategy</li>
+        <li>User Research</li>
+        <li>Wireframing</li>
+        <li>Prototyping</li>
+        <li>Roadmapping</li>
+        <li>Figma</li>
+        <li>Usability Testing</li>
+        <li>Prioritisation</li>
+      </ul>
+    </div>
+  </main>
+  </div>
+
+  <div class="view" id="view-contact" hidden>
+<main class="page">
+    <header class="page-head">
+      <h1>Get in touch</h1>
+    </header>
+
+    <div class="page-body">
+      <div class="contact-grid">
+        <p class="page-head__lead">The best way to get in touch with me is by email. I&rsquo;m open to
+        product and design roles, and always happy to talk process.</p>
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:juliettekuno@gmail.com">
+              <span class="label">Email</span>
+              <span class="value">juliettekuno@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/juliette-kuno-0517b0a6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
+              <span class="label">LinkedIn</span>
+              <span class="value">linkedin.com/in/juliette-kuno</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Book recommendation (2026-09-29): a small personal touch, floating
+         bottom-right of the Contact page only. -->
+    <button class="book-rec" type="button" aria-haspopup="dialog"
+            aria-label="A book I'd recommend: The Name of the Wind by Patrick Rothfuss — open for details">
+      <svg class="book-rec__svg" viewBox="0 -0.5 64 43.5" aria-hidden="true">
+        <!-- the frog -->
+        <path class="book-rec__frog"
+              d="M14,25 C12,14 18,6 32,6 C46,6 52,14 50,25 C50,26 47,27 44,26
+                 C38,28 26,28 20,26 C17,27 14,26 14,25 Z" />
+        <!-- bent legs, framing the sides of the book she's holding -->
+        <path class="book-rec__leg" d="M17,23 C12.5,25.5 11,29.5 14.5,32.5" />
+        <path class="book-rec__leg" d="M47,23 C51.5,25.5 53,29.5 49.5,32.5" />
+        <circle class="book-rec__foot" cx="14.5" cy="32.8" r="2.2" />
+        <circle class="book-rec__foot" cx="49.5" cy="32.8" r="2.2" />
+        <circle class="book-rec__eye" cx="23" cy="9" r="5.5" />
+        <circle class="book-rec__eye" cx="41" cy="9" r="5.5" />
+        <circle class="book-rec__pupil" cx="23" cy="10.8" r="1.7" />
+        <circle class="book-rec__pupil" cx="41" cy="10.8" r="1.7" />
+        <ellipse class="book-rec__eyelid" cx="23" cy="9" rx="5.7" ry="5.7" />
+        <ellipse class="book-rec__eyelid book-rec__eyelid--right" cx="41" cy="9" rx="5.7" ry="5.7" />
+        <!-- the book she's reading, held below her chin -- straight-edged
+             rectangular pages (a slight fan, not a curved "petal" shape),
+             so it reads as a real book rather than blending into the
+             frog's rounded silhouette above it. -->
+        <path class="book-rec__page book-rec__page--left"
+              d="M32,28 L21,27.5 L20,38.5 L32,39 Z" />
+        <path class="book-rec__page book-rec__page--right"
+              d="M32,28 L43,27.5 L44,38.5 L32,39 Z" />
+        <line class="book-rec__line" x1="23.5" y1="31" x2="29.5" y2="30.8" />
+        <line class="book-rec__line" x1="23" y1="34.5" x2="29" y2="34.3" />
+        <line class="book-rec__line" x1="40.5" y1="31" x2="34.5" y2="30.8" />
+        <line class="book-rec__line" x1="41" y1="34.5" x2="35" y2="34.3" />
+        <line class="book-rec__spine" x1="32" y1="27" x2="32" y2="39.5" />
+      </svg>
+    </button>
+
+    <dialog class="book-modal" aria-label="Book recommendation">
+      <div class="book-modal__inner">
+        <div class="book-modal__head">
+          <p class="book-modal__eyebrow mono">A book I&rsquo;d recommend</p>
+          <button class="book-modal__close" type="button" aria-label="Close">&#10005;</button>
+        </div>
+        <h2 class="book-modal__title">The Name of the Wind</h2>
+        <p class="book-modal__author">Patrick Rothfuss</p>
+      </div>
+    </dialog>
+  </main>
+  </div>
+
+  <footer class="foot">
+    <span>&copy; 2026 Juliette Kuno</span>
+    <a href="#/contact">Get in touch</a>
+  </footer>
+
+  <button class="toc-fab" type="button" aria-haspopup="dialog" hidden>
+    <span class="toc-fab__icon" aria-hidden="true">&#9776;</span>Contents
+  </button>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" hidden>
+    <span class="back-to-top__icon" aria-hidden="true">&#8593;</span>Top
+  </button>
+
+  <dialog class="lightbox" aria-label="Screenshot preview">
+    <div class="lightbox__frame">
+      <img class="lightbox__img" src="" alt="">
+      <button class="lightbox__close" type="button" aria-label="Close">&#10005;</button>
+    </div>
+  </dialog>
+
+  <dialog class="toc-sheet" aria-label="Table of contents">
+    <div class="toc-sheet__inner">
+      <div class="toc-sheet__head">
+        <p class="mono">Table of Contents</p>
+        <button class="toc-sheet__close" type="button" aria-label="Close">&#10005;</button>
+      </div>
+      <div class="toc-sheet__list"></div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      /* Stop the browser's own scroll-position restore on reload -- it can
+         race against our own scrollIntoView calls below and produce a
+         double-scroll. We restore reading position ourselves instead
+         (2026-09-24, see SS_SECTION/SS_VISITED). */
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      var SS_SECTION = 'cs-last-section';
+      var SS_VISITED = 'cs-visited';
+
+      /* ---------------- in-file router ----------------
+         Every page of the portfolio lives in this one document as a "view".
+         Navigation swaps views, so it can never leave the file — which is
+         why the case-study toggle can never go missing. */
+      var VIEWS = ['home', 'work', 'case', 'about', 'contact'];
+      var view = {}, navLink = {};
+      VIEWS.forEach(function (k) { view[k] = document.getElementById('view-' + k); });
+      document.querySelectorAll('[data-nav]').forEach(function (a) {
+        navLink[a.getAttribute('data-nav')] = a;
+      });
+
+      var fab = document.querySelector('.toc-fab');
+      var sheet = document.querySelector('.toc-sheet');
+      var backToTop = document.querySelector('.back-to-top');
+      var currentView = null;
+
+      function showView(key, keepScroll) {
+        if (!view[key]) key = 'home';
+        currentView = key;
+        VIEWS.forEach(function (k) { view[k].hidden = k !== key; });
+        /* the case study lives under Case Studies & Projects */
+        var navKey = key === 'case' ? 'work' : key;
+        Object.keys(navLink).forEach(function (k) {
+          if (k === navKey) navLink[k].setAttribute('aria-current', 'page');
+          else navLink[k].removeAttribute('aria-current');
+        });
+        if (fab) fab.hidden = key !== 'case';
+        if (backToTop && key !== 'case') backToTop.hidden = true;
+        if (!keepScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+        if (key === 'case') {
+          update();
+          try { sessionStorage.setItem(SS_VISITED, '1'); } catch (e) {}
+        }
+      }
+
+      /* ---------------- case-study wayfinding ----------------
+         The whole case study is on the page. The toggle doesn't filter
+         anything - it reports which of the three parts you're reading and
+         jumps you to one. The contents list does the same at section level. */
+      var PARTS = ['product', 'problem', 'process'];
+      var partBtns = {};
+      var bars = document.querySelectorAll('.cs-tabs');
+      PARTS.forEach(function (k) {
+        partBtns[k] = document.querySelectorAll('.cs-tab[data-tab-btn="' + k + '"]');
+      });
+      /* The header TOC (narrow viewports) now lists every section, same as the
+         sidebar rail -- both share the is-dim/is-active treatment so neither
+         one filters down to "just the current tab" (2026-09-24 fix). */
+      var railItems = document.querySelectorAll('.cs-rail li[data-tab], .cs-head-toc li[data-tab]');
+      var headTocList = document.querySelector('.cs-head-toc > ol');
+      var sheet = document.querySelector('.toc-sheet');
+
+      /* which part a section belongs to */
+      function partOf(id) {
+        var el = document.getElementById(id);
+        if (!el) return null;
+        var panel = el.closest('.cs-panel');
+        return panel ? panel.id.replace('panel-', '') : null;
+      }
+
+      /* every section the contents list points at, in document order. Both
+         the rail and the header TOC now carry a link to each id, so track
+         every matching <a> per id, not just one. */
+      var links = {}, targets = [];
+      document.querySelectorAll('.cs-rail a[href^="#"], .cs-head-toc a[href^="#"]').forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (!el) return;
+        (links[id] || (links[id] = [])).push(a);
+        if (targets.indexOf(el) === -1) targets.push(el);
+      });
+      targets.sort(function (x, y) {
+        return x.compareDocumentPosition(y) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+      });
+
+      var currentSection, currentPart;
+
+      function markSection(id) {
+        if (id === currentSection) return;
+        currentSection = id;
+        Object.keys(links).forEach(function (k) {
+          var on = k === id;
+          links[k].forEach(function (a) {
+            a.classList.toggle('is-active', on);
+            if (on) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      }
+
+      function markPart(key) {
+        if (key === currentPart) return;
+        currentPart = key;
+        var idx = PARTS.indexOf(key);
+        bars.forEach(function (b) { b.style.setProperty('--i', String(idx < 0 ? 0 : idx)); });
+        PARTS.forEach(function (k) {
+          var on = k === key;
+          partBtns[k].forEach(function (btn) {
+            if (on) btn.setAttribute('aria-current', 'true');
+            else btn.removeAttribute('aria-current');
+          });
+        });
+        railItems.forEach(function (li) {
+          li.classList.toggle('is-dim', li.dataset.tab !== key);
+        });
+        syncSheet();
+      }
+
+      var OFFSET = 150;
+      var BACK_TO_TOP_AT = 600;
+      function update() {
+        if (currentView !== 'case') return;
+        if (backToTop) backToTop.hidden = window.scrollY < BACK_TO_TOP_AT;
+        var hit = null;
+        for (var i = 0; i < targets.length; i++) {
+          if (targets[i].getBoundingClientRect().top - OFFSET <= 0) hit = targets[i].id;
+          else break;
+        }
+        if (!hit && targets.length) hit = targets[0].id;
+        markSection(hit);
+        markPart(partOf(hit) || PARTS[0]);
+        /* Reading position, tracked continuously so a reload can restore it
+           (2026-09-24) -- separate from location.hash, which only ever
+           reflects the last link the reader clicked, not how far they
+           actually scrolled past it. */
+        if (hit) { try { sessionStorage.setItem(SS_SECTION, hit); } catch (e) {} }
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () { update(); ticking = false; });
+      }, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+
+      /* clicking a part scrolls to where that part begins */
+      function jumpToPart(key) {
+        var panel = document.getElementById('panel-' + key);
+        if (!panel) return;
+        var nav = document.querySelector('.nav');
+        var navH = nav ? nav.getBoundingClientRect().height : 0;
+        var y = window.scrollY + panel.getBoundingClientRect().top - navH - 24;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+
+      PARTS.forEach(function (k, i) {
+        partBtns[k].forEach(function (btn) {
+          btn.addEventListener('click', function () { jumpToPart(k); });
+          btn.addEventListener('keydown', function (e) {
+            var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+            if (!d) return;
+            e.preventDefault();
+            var next = PARTS[(i + d + PARTS.length) % PARTS.length];
+            jumpToPart(next);
+            var sib = btn.parentElement.querySelector('[data-tab-btn="' + next + '"]');
+            if (sib) sib.focus();
+          });
+        });
+      });
+
+      function syncSheet() {
+        if (!sheet || !headTocList) return;
+        var box = sheet.querySelector('.toc-sheet__list');
+        if (!box) return;
+        box.innerHTML = '';
+        box.appendChild(headTocList.cloneNode(true));
+      }
+
+      var fabBtn = document.querySelector('.toc-fab');
+      if (fabBtn && sheet && typeof sheet.showModal === 'function') {
+        fabBtn.addEventListener('click', function () { sheet.showModal(); });
+        sheet.addEventListener('click', function (e) {
+          if (e.target === sheet || e.target.closest('.toc-sheet__close') ||
+              e.target.closest('a[href^="#"]')) { sheet.close(); }
+        });
+      }
+
+      /* Book recommendation (Contact page) -- same open/close pattern as
+         the Contents sheet above: native <dialog>, click backdrop or the
+         close button to dismiss. */
+      var bookBtn = document.querySelector('.book-rec');
+      var bookModal = document.querySelector('.book-modal');
+      if (bookBtn && bookModal && typeof bookModal.showModal === 'function') {
+        bookBtn.addEventListener('click', function () { bookModal.showModal(); });
+        bookModal.addEventListener('click', function (e) {
+          if (e.target === bookModal || e.target.closest('.book-modal__close')) {
+            bookModal.close();
+          }
+        });
+      }
+
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      /* Screenshot lightbox (2026-09-25): click (or Enter/Space) any tool
+         screenshot in "03 The Problem" to see it larger. Scoped by
+         selector to that section's images rather than editing all 7 <img>
+         tags by hand -- tabindex/role are set here too, so they become
+         keyboard-reachable without touching the markup. */
+      var lightbox = document.querySelector('.lightbox');
+      var lightboxImg = document.querySelector('.lightbox__img');
+      var lightboxClose = document.querySelector('.lightbox__close');
+      if (lightbox && lightboxImg && typeof lightbox.showModal === 'function') {
+        /* "03 The Problem" tool screenshots, plus every image in Ideate (Trello
+           board, lo-fi wireframes, pen & paper sketches) -- 2026-09-28 */
+        var zoomable = document.querySelectorAll('#problem .frame img, #problem .notes-row img, #ideate img');
+        zoomable.forEach(function (img) {
+          img.tabIndex = 0;
+          img.setAttribute('role', 'button');
+          /* role="button" on its own would still announce as the image's
+             alt text -- a plain description, not something that tells an
+             assistive-tech user this is an interactive control. Appending
+             the action makes the announced name e.g. "Excel training
+             spreadsheet with a weekly plan and goals, view larger, button"
+             (2026-09-29 labeling pass). */
+          if (img.alt) img.setAttribute('aria-label', img.alt + ', view larger');
+          img.classList.add('zoomable');
+          function open() {
+            lightboxImg.src = img.currentSrc || img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.showModal();
+          }
+          img.addEventListener('click', open);
+          img.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+          });
+        });
+        lightboxClose.addEventListener('click', function () { lightbox.close(); });
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) lightbox.close();
+        });
+        lightbox.addEventListener('close', function () { lightboxImg.src = ''; });
+      }
+
+      /* ---------------- routing ---------------- */
+      function applyHash(keepScroll) {
+        var h = (location.hash || '').slice(1);
+        if (h.charAt(0) === '/') {
+          var route = h.slice(1);
+          /* Reload landing on #/case (not a section anchor) with no click
+             involved -- e.g. the reader scrolled around without ever
+             following a contents link. Restore reading position here too,
+             same reasoning as the section-hash branch below. */
+          if (route === 'case' && keepScroll) {
+            var visited2 = false;
+            try { visited2 = sessionStorage.getItem(SS_VISITED) === '1'; } catch (e) {}
+            if (visited2) {
+              var savedId2 = null;
+              try { savedId2 = sessionStorage.getItem(SS_SECTION); } catch (e) {}
+              var saved2 = savedId2 && document.getElementById(savedId2);
+              showView('case', true);
+              if (saved2) { requestAnimationFrame(function () { saved2.scrollIntoView(); }); return; }
+            }
+          }
+          showView(route, keepScroll);
+          return;
+        }
+        if (h && document.getElementById(h) && partOf(h)) {
+          /* keepScroll is only ever true here on the very first applyHash
+             call of a page load/reload -- every click-driven hashchange
+             passes false. So keepScroll + "we've shown the case view
+             before in this tab" (SS_VISITED) together mean: this is a
+             reload, and the section in the URL is just wherever the reader
+             last clicked, not a deliberate link they're following right
+             now. Restore how far they'd actually read instead (2026-09-24
+             fix for reload always landing on "07 The Future of Ganbare" --
+             whatever section they'd last clicked stuck in the address bar
+             forever, so every reload re-jumped there). A genuinely fresh
+             deep link (new tab, SS_VISITED unset) still scrolls to the
+             linked section, same as before. */
+          var reload = keepScroll;
+          var visited = false;
+          try { visited = sessionStorage.getItem(SS_VISITED) === '1'; } catch (e) {}
+          if (reload && visited) {
+            var savedId = null;
+            try { savedId = sessionStorage.getItem(SS_SECTION); } catch (e) {}
+            var saved = savedId && document.getElementById(savedId);
+            showView('case', true);
+            if (saved) requestAnimationFrame(function () { saved.scrollIntoView(); });
+            else window.scrollTo(0, 0);
+            return;
+          }
+          showView('case', true);
+          var el = document.getElementById(h);
+          if (el) requestAnimationFrame(function () { el.scrollIntoView(); });
+          return;
+        }
+        showView('home', keepScroll);
+      }
+
+      window.addEventListener('hashchange', function () { applyHash(false); });
+
+      applyHash(true);
+      update();
+    })();
+  </script>
+
+</body>
+</html>
