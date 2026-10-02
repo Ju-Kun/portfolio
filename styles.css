@@ -253,27 +253,19 @@ p { overflow-wrap: break-word; }
 
 /* Download CV button (2026-09-25): was squished flush against the lead
    paragraph above it (no margin-top set anywhere for a .btn inside
-   .page-head). Also an experiment per her request -- rounded corners and
-   a green-to-purple gradient, distinct from the plain solid-ink .btn used
-   elsewhere (home page's "Case Studies" button), so scoped to .page-head
-   .btn specifically; that's the only .btn that lives inside a .page-head.
-   Follow-up (same day): first pass used a saturated dark green-to-purple
-   with white text -- too loud, wanted pastel and subdued instead. Now a
-   light mint-to-lavender gradient with fixed dark text (not the
-   theme-driven --bg/--ink swap, same reasoning as the product screenshot
-   cards: this background doesn't invert with light/dark mode, so neither
-   can the text) -- both ends hold 12-13:1 against #1c1c1a regardless of
-   theme, much more than the loud version needed. */
+   .page-head). It remains a rounded, pastel filled button distinct from
+   the plain solid-ink .btn used elsewhere, but the palette has been tuned
+   toward blue/green hues to match the softer portfolio direction. */
 .page-head .btn {
   margin-top: 1.5rem;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg in oklab, #c9ead6, #e3d3f2);
+  background: linear-gradient(135deg in oklab, #bfe7ff, #cfeee0);
   color: #1c1c1a;
 }
 .page-head .btn:hover,
 .page-head .btn:focus-visible {
-  background: linear-gradient(135deg in oklab, #b9e0c9, #d6c0ec);
+  background: linear-gradient(135deg in oklab, #afd8ff, #bcebd6);
   color: #1c1c1a;
 }
 
@@ -441,9 +433,9 @@ p { overflow-wrap: break-word; }
 }
 
 /* Was a plain underlined text link -- easy to miss as the only way into
-   the case study. Now a rounded pill with a pastel orange-to-pink
-   gradient, bolder label, same idea and fixed (non-theme-swapping) dark
-   text as the About page's CV gradient button. */
+   the case study. Now a rounded pill with a soft blue-green pastel
+   gradient, bolder label, and the same fixed dark text as the About
+   page's CV gradient button. */
 .link-arrow {
   display: inline-flex;
   align-items: baseline;
@@ -451,10 +443,7 @@ p { overflow-wrap: break-word; }
   flex-shrink: 0;
   padding: 0.75rem 1.25rem;
   border-radius: 999px;
-  /* Back to the peach/coral -> raspberry gradient (2026-09-29) -- briefly
-     tried option D (deep teal -> amber) and reverted. Same fixed,
-     non-theme-swapping dark text either way. */
-  background: linear-gradient(135deg in oklab, #f6dcb8, #f6c9de);
+  background: linear-gradient(135deg in oklab, #c3e6ff, #d4f0e3);
   font-family: var(--font-mono);
   font-size: var(--step--1);
   font-weight: 700;
@@ -466,7 +455,7 @@ p { overflow-wrap: break-word; }
 }
 .link-arrow:hover,
 .link-arrow:focus-visible {
-  background: linear-gradient(135deg in oklab, #f2cf9d, #f0b3cf);
+  background: linear-gradient(135deg in oklab, #b4ddff, #c1ead6);
 }
 /* "Check out the app" beside the case study's Ganbare title. Pushed to the
    far right of the row with space-between (2026-09-29) -- .cs-title-row
