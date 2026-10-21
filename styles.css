@@ -2393,3 +2393,14 @@ blockquote cite {
   .book-rec__svg { width: 2.2rem; }
 }
 
+
+/* Case study publish date (2026-10-12): sits right-aligned above the title,
+   semi-bold and small so it reads as metadata, not a heading. Later blog
+   posts on new iterations get their own dates; this one stays fixed. */
+.cs-published {
+  margin: 0 0 0.5rem;
+  text-align: right;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink-soft);
+}

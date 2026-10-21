@@ -1,0 +1,98 @@
+<div style="padding:1rem 0">
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Exercise app home screen in light and dark, with each workout identified by a mosaic subdivision as well as a colour, applied to the today cards, the week strip, the day list and the background mosaic.</h2>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+.wrH{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.phH{width:308px;border-radius:24px;background:var(--bg);border:0.5px solid var(--line);font-family:var(--font-sans);color:var(--tx);overflow:hidden}
+.lt{--bg:#F1EAE0;--card:#FFFCF8;--tx:#2B2521;--tx2:#736659;--line:#E2D8CB;--empty:#E4DACB;--rest:#EBE3D7;--today:#F3ECE2;--mop:.2;--w-r:#C2542A;--w-p:#7B4E76;--w-o:#C08A1C;--w-i:#4A5E9E;--w-v:#5F7C3C;--w-t:#B85A6A;--ink-r:#A8451F;--ink-p:#6A4266;--ink-o:#8A6210;--ink-i:#3E5090;--ink-v:#4E6830;--ink-t:#9E4657;--dp-r:#7E3212;--dp-p:#4C2C48;--dp-o:#7A5609;--dp-i:#2E3C64;--dp-v:#3B5124;--dp-t:#7C3745}
+.dk{--bg:#191512;--card:#241E19;--tx:#F3EBE1;--tx2:#A99B8C;--line:#3A322B;--empty:#332B24;--rest:#201B16;--today:#2C251F;--mop:.28;--w-r:#E8834F;--w-p:#C08FBB;--w-o:#DFAE4C;--w-i:#8397D8;--w-v:#93B36E;--w-t:#E08E9C;--ink-r:#E8834F;--ink-p:#C08FBB;--ink-o:#DFAE4C;--ink-i:#8397D8;--ink-v:#93B36E;--ink-t:#E08E9C;--dp-r:#9C4A20;--dp-p:#7E5079;--dp-o:#96691C;--dp-i:#4A5A91;--dp-v:#5B7842;--dp-t:#9C5464}
+.topH{padding:14px 18px 0}
+.latH{display:flex;gap:6px;padding:0 6px;margin-left:-18px;margin-right:-18px}
+.cellH{flex:1;border-radius:9px;overflow:hidden;display:flex;flex-direction:column-reverse}
+.histH{position:relative;margin-top:6px}
+.mosH{position:absolute;top:0;left:0;right:0;bottom:0;opacity:var(--mop);display:flex;flex-direction:column;gap:6px;padding:0 6px;overflow:hidden}
+.mrowH{display:flex;gap:6px;height:38px;flex:none}
+.botH{position:relative;z-index:1;padding:14px 18px 16px}
+.dspH{font-family:'Fraunces',Georgia,serif;font-weight:500}
+.cdH{background:var(--card);border-radius:14px}
+.lblH{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx);margin:18px 2px 9px;display:flex;justify-content:space-between;align-items:baseline}
+.mtH{font-size:12px;color:var(--tx2);line-height:1.45;margin-top:2px}
+.wrHr{display:flex;gap:11px;padding:9px 12px;border-bottom:0.5px solid var(--line)}
+.liH{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:2.5px 0}
+.tbH{flex:1;text-align:center;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
+</style>
+<div class="wrH">
+<div class="phH lt"><div class="topH" id="t4-lt"></div><div class="histH"><div class="mosH" id="mB-lt"></div><div class="botH" id="b4-lt"></div></div></div>
+<div class="phH dk"><div class="topH" id="t4-dk"></div><div class="histH"><div class="mosH" id="mB-dk"></div><div class="botH" id="b4-dk"></div></div></div>
+</div>
+<script>
+(function(){
+var K=['r','p','o','i','v','t'];
+var SUB={
+r:'',
+p:'<rect x="0" y="0" width="20" height="20" fill="C"/><rect x="20" y="20" width="20" height="20" fill="C"/>',
+o:'<path d="M0 40L40 0V40Z" fill="C"/>',
+i:'<path d="M7 7H33V33H7Z M15 15V25H25V15Z" fill="C" fill-rule="evenodd"/>',
+v:'<rect x="0" y="14" width="40" height="12" fill="C"/>',
+t:'<path d="M0 0H18L0 18Z" fill="C"/><path d="M40 40H22L40 22Z" fill="C"/>'};
+function marks(k,filled){
+if(!SUB[k])return '';
+var c=filled?'var(--dp-'+k+')':'var(--w-'+k+')';
+return '<svg viewBox="0 0 40 40" preserveAspectRatio="none" width="100%" height="100%" style="display:block" aria-hidden="true">'+SUB[k].split('C').join(c)+'</svg>';}
+function tile(k,filled,extra){
+var base=filled?'background:var(--w-'+k+');':'border:2px solid var(--ink-'+k+');box-sizing:border-box;';
+return '<div style="'+base+'overflow:hidden;'+extra+'">'+marks(k,filled)+'</div>';}
+var s=8675309;function rnd(){s=(s*1664525+1013904223)%4294967296;return s/4294967296}
+var mh='';
+for(var w=0;w<14;w++){var op=Math.max(0.34,1-w*0.055);
+mh+='<div class="mrowH" style="opacity:'+op.toFixed(2)+'">';
+for(var d=0;d<7;d++){var r=rnd(),n=r<0.3?0:r<0.68?1:2;
+mh+='<div class="cellH">';
+for(var i=0;i<n;i++)mh+=tile(K[Math.floor(rnd()*6)],1,'flex:1;');
+mh+='</div>';}
+mh+='</div>';}
+var strip=[{d:['r','o'],t:2},{d:['p'],t:1},{r:1},{d:['o'],t:2},{d:[],t:3},{d:[],t:2},{d:[],t:1}];
+var st='<div class="latH" style="height:38px">';
+for(var i2=0;i2<strip.length;i2++){var e=strip[i2];
+if(e.r){st+='<div class="cellH" style="background:var(--rest);flex-direction:row;align-items:center;justify-content:center"><div style="width:10px;height:2px;border-radius:1px;background:var(--tx2);opacity:.55"></div></div>';continue;}
+st+='<div class="cellH" style="background:var(--empty)">';
+for(var j=0;j<e.d.length;j++)st+=tile(e.d[j],1,'flex:1;');
+for(var z=e.d.length;z<e.t;z++)st+='<div style="flex:1"></div>';
+st+='</div>';}
+st+='</div>';
+var L=['M','T','W','T','F','S','S'];
+var dl='<div class="latH" style="margin-bottom:5px">';
+for(var q=0;q<7;q++)dl+='<div style="flex:1;text-align:center;font-size:11px;color:'+(q===3?'var(--tx)':'var(--tx2)')+'">'+L[q]+'</div>';
+dl+='</div>';
+function sq(k,done){return tile(k,done,'width:16px;height:16px;border-radius:5px;flex:none;');}
+function bigsq(k,done){return tile(k,done,'width:50px;height:50px;border-radius:12px;flex:none;');}
+var wk=[['MON','9',[['Push day','45 min','r',1],['Run','30 min','o',1]]],['TUE','10',[['Leg day','60 min','p',1]]],['WED','11','rest'],['THU','12',[['Push day','45 min','r',0],['Run','30 min','o',1]]],['FRI','13',[['Stretch','30 min','v',0],['Run','30 min','o',0],['Climb','90 min','i',0]]],['SAT','14',[['Stretch','30 min','v',0],['No hangs','30 min','t',0]]],['SUN','15',[['Run','30 min','o',0]]]];
+var rows='';
+for(var x=0;x<wk.length;x++){var e2=wk[x],today=x===3,last=x===6;
+rows+='<div class="wrHr" style="'+(today?'background:var(--today);':(e2[2]==='rest'?'background:var(--rest);align-items:center;':''))+(last?'border:none;':'')+'">';
+rows+='<div style="width:30px;flex:none;text-align:center"><div style="font-size:9.5px;letter-spacing:.05em;color:'+(today?'var(--tx)':'var(--tx2)')+'">'+e2[0]+'</div><div class="dspH" style="font-size:15px">'+e2[1]+'</div></div>';
+if(e2[2]==='rest'){rows+='<div style="flex:1;font-size:12.5px;color:var(--tx2)">Rest day</div>';}
+else{rows+='<div style="flex:1">';
+for(var y=0;y<e2[2].length;y++){var it=e2[2][y];
+rows+='<div class="liH">'+sq(it[2],it[3])+it[0]+' <span style="color:var(--tx2)">· '+it[1]+'</span></div>';}
+rows+='</div>';}
+rows+='</div>';}
+var link='<div style="display:flex;align-items:center;gap:1px;color:var(--ink-r);font-size:13px;flex:none">Start<i class="ti ti-chevron-right" style="font-size:17px" aria-hidden="true"></i></div>';
+var chevq='<div style="font-size:19px;color:var(--tx2);flex:none;padding-right:2px"><i class="ti ti-chevron-right" aria-hidden="true"></i></div>';
+var TOP='<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--tx2);padding:2px 6px 10px"><span>9:41</span><span>WiFi</span></div>'
++'<div class="cdH" style="padding:15px 16px"><div class="dspH" style="font-size:21px;line-height:1.15">Thursday, 12 June</div><div class="mtH">You\'ve moved 11 of the last 12 weeks.</div></div>'
++'<div class="lblH" style="margin-top:16px"><span>Scheduled for today</span></div>'
++'<div class="cdH" style="padding:12px;display:flex;align-items:center;gap:11px;margin-bottom:9px">'+bigsq('r',0)+'<div style="flex:1;min-width:0"><div class="dspH" style="font-size:16px">Push day <span style="color:var(--tx2);font-size:12.5px;font-family:var(--font-sans)">· 30 min</span></div><div class="mtH">Bench · OHP · Tricep dips</div></div>'+link+'</div>'
++'<div class="cdH" style="padding:12px;display:flex;align-items:center;gap:11px">'+bigsq('o',1)+'<div style="flex:1;min-width:0"><div class="dspH" style="font-size:16px">Run <span style="color:var(--tx2);font-size:12.5px;font-family:var(--font-sans)">· 45 min</span></div><div class="mtH">Two Bridges · 10 km</div></div>'+chevq+'</div>'
++'<div class="lblH"><span>This week</span><span style="letter-spacing:0;text-transform:none;font-size:11px;color:var(--tx2)">Moved 3 of 3 days so far</span></div>'
++dl+st;
+var BOT='<div class="cdH" style="padding:0;overflow:hidden;margin-top:8px">'+rows+'</div>'
++'<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 4px 12px"><div style="width:28px;height:28px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--tx2)"><i class="ti ti-chevron-left" aria-hidden="true"></i></div><div class="dspH" style="font-size:13.5px">Jun 9 – 15</div><div style="width:28px;height:28px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--tx2)"><i class="ti ti-chevron-right" aria-hidden="true"></i></div></div>'
++'<div style="display:flex;background:var(--card);border-radius:14px;padding:9px 0"><div class="tbH" style="color:var(--tx)"><div style="font-size:17px"><i class="ti ti-home" aria-hidden="true"></i></div>Home</div><div class="tbH"><div style="font-size:17px"><i class="ti ti-books" aria-hidden="true"></i></div>Library</div><div class="tbH"><div style="font-size:17px"><i class="ti ti-user" aria-hidden="true"></i></div>Profile</div></div>';
+['lt','dk'].forEach(function(m){
+document.getElementById('t4-'+m).innerHTML=TOP;
+document.getElementById('mB-'+m).innerHTML=mh;
+document.getElementById('b4-'+m).innerHTML=BOT;});
+})();
+</script>
+</div>
