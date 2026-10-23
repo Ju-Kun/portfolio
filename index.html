@@ -16,6 +16,7 @@
     <a class="nav__name" href="#/home">Juliette Kuno</a>
     <div class="nav__links">
       <a href="#/work" data-nav="work">Case Studies &amp; Projects</a>
+      <a href="#/journal" data-nav="journal">Journal</a>
       <a href="#/about" data-nav="about">About</a>
       <a href="#/contact" data-nav="contact">Contact</a>
     </div>
@@ -41,6 +42,20 @@
         </div>
       </div>
     </header>
+
+    <!-- Latest journal post. Filled in by the script from the newest
+         post in the Journal -- nothing to edit here. -->
+    <section class="jr-home" hidden>
+      <div class="jr-band">
+        <div>
+          <p class="mono jr-band__eyebrow"></p>
+          <h2 class="jr-band__title"></h2>
+          <p class="jr-band__summary"></p>
+        </div>
+        <a class="link-arrow jr-band__link" href="#/journal">Read update <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <p class="jr-home__all"><a class="link-arrow" href="#/journal">All journal updates <span aria-hidden="true">&rarr;</span></a></p>
+    </section>
   </main>
   </div>
 
@@ -136,6 +151,10 @@
         <div><dt>Status</dt><dd>Live &amp; in daily use</dd></div>
       </dl>
 
+      <!-- Journal notice. Filled in by the script from the Ganbare posts
+           in the Journal -- nothing to edit here. -->
+      <p class="jr-callout" data-topic="ganbare" hidden></p>
+
     </header>
 
       <div class="cs-tabs cs-tabs--inline" role="group" aria-label="Jump to a part of the case study">
@@ -201,7 +220,7 @@
             </figcaption>
           </figure>
           <figure>
-            <img class="shot" src="assets/ganbare/product-2-library.png" alt="Ganbare library screen with Workouts and Exercises tabs, a search field, category filters and saved workouts">
+            <img class="shot" src="assets/ganbare/product-2-library-v2.png" alt="Ganbare library screen with Workouts and Exercises tabs, a search field, category filters and saved workouts">
             <figcaption>
               <b>Workout &amp; Exercise Library</b>
               <div class="figcaption__body">
@@ -1290,6 +1309,94 @@
   </main>
   </div>
 
+  <!-- ============================================================
+       JOURNAL
+       Address = id: #/journal/ganbare  ->  id="view-journal-ganbare"
+                     #/journal/ganbare/my-post -> id="view-journal-ganbare-my-post"
+       The topic list, each topic's timeline, the homepage band and the
+       case-study notice are all built from the posts below -- to publish,
+       you only add a post.
+       ============================================================ -->
+
+  <!-- Journal home: one row per topic -->
+  <div class="view" id="view-journal" hidden>
+<main class="page">
+    <header class="page-head">
+      <h1>Journal</h1>
+      <p class="page-head__lead">What changed in my projects after the case study was written, and why.</p>
+    </header>
+    <div class="page-body">
+      <ul class="jr-topics">
+        <!-- TOPIC: copy this <li> for a new topic, and add a matching
+             view-journal-<topic> block below. -->
+        <li>
+          <a class="jr-topic" href="#/journal/ganbare">
+            <span class="jr-topic__name">Ganbare</span>
+            <span class="jr-topic__desc">Training app &mdash; updates since the case study</span>
+            <span class="mono jr-topic__count" data-count="ganbare"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+  </div>
+
+  <!-- Topic: Ganbare (timeline is built automatically) -->
+  <div class="view" id="view-journal-ganbare" hidden>
+<main class="page">
+    <header class="page-head">
+      <a class="link-arrow" href="#/journal"><span aria-hidden="true">&larr;</span> Journal</a>
+      <h1>Ganbare</h1>
+      <p class="page-head__lead">Changes to the app since the case study, in the order they happened.</p>
+    </header>
+    <div class="page-body">
+      <ol class="jr-timeline" data-topic="ganbare"></ol>
+      <p class="jr-origin"><a class="link-arrow" href="#/case">Where it started: the Ganbare case study <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+  </main>
+  </div>
+
+  <!-- ------------------------------------------------------------
+       POSTS. To write a new one, copy a whole post block and change:
+         - the id:              view-journal-<topic>-<short-name>
+         - data-topic:          ganbare (must match the topic)
+         - data-date:           YYYY-MM-DD (newest date shows first)
+         - data-version:        optional, e.g. v1.4 -- delete the
+                                attribute if you don't want a badge
+         - data-title / data-summary: shown on the timeline, the homepage
+                                and the case-study notice
+         - data-section:        optional, the case-study section this
+                                updates (an id like "develop") -- adds a
+                                "see original section" link at the end
+       Then write the content inside .jr-post__body with normal HTML.
+       Images: <figure><img src="assets/journal/..." alt="..."><figcaption>...</figcaption></figure>
+       ------------------------------------------------------------ -->
+
+  <div class="view" id="view-journal-ganbare-starting-the-journal" hidden
+       data-topic="ganbare"
+       data-date="2026-10-23"
+       data-title="Starting the Ganbare journal"
+       data-summary="The case study is a snapshot. This is where the changes after it go.">
+<main class="page">
+    <article class="jr-post">
+      <a class="link-arrow" href="#/journal/ganbare"><span aria-hidden="true">&larr;</span> Ganbare journal</a>
+      <p class="mono jr-post__meta"></p>
+      <h1>Starting the Ganbare journal</h1>
+      <div class="jr-post__body">
+        <p>The Ganbare case study describes the app as it was when I wrote it. The app has
+        kept changing since: my partner and I use it every week, and what we run into
+        decides what I change next.</p>
+        <p>Instead of rewriting the case study each time, I'll write the changes up here: what
+        changed, why, and what I learned from it.</p>
+        <figure>
+          <img src="assets/ganbare/product-1-homepage-v2.png" alt="The Ganbare homepage, showing the weekly training view.">
+          <figcaption>The homepage as it stands when this journal starts.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </main>
+  </div>
+
   <div class="view" id="view-about" hidden>
 <main class="page">
     <header class="page-head page-head--photo">
@@ -1512,9 +1619,15 @@ scale.</p>
          Every page of the portfolio lives in this one document as a "view".
          Navigation swaps views, so it can never leave the file — which is
          why the case-study toggle can never go missing. */
-      var VIEWS = ['home', 'work', 'case', 'about', 'contact'];
+      /* Every .view on the page is a route, so a new journal post needs no
+         script change: #/journal/ganbare/x -> id="view-journal-ganbare-x". */
+      var VIEWS = [];
       var view = {}, navLink = {};
-      VIEWS.forEach(function (k) { view[k] = document.getElementById('view-' + k); });
+      document.querySelectorAll('.view[id^="view-"]').forEach(function (el) {
+        var k = el.id.slice(5);
+        VIEWS.push(k);
+        view[k] = el;
+      });
       document.querySelectorAll('[data-nav]').forEach(function (a) {
         navLink[a.getAttribute('data-nav')] = a;
       });
@@ -1525,11 +1638,13 @@ scale.</p>
       var currentView = null;
 
       function showView(key, keepScroll) {
+        key = key.replace(/\//g, '-');
         if (!view[key]) key = 'home';
         currentView = key;
         VIEWS.forEach(function (k) { view[k].hidden = k !== key; });
-        /* the case study lives under Case Studies & Projects */
-        var navKey = key === 'case' ? 'work' : key;
+        /* the case study lives under Case Studies & Projects, and every
+           topic and post under Journal */
+        var navKey = key === 'case' ? 'work' : key.indexOf('journal') === 0 ? 'journal' : key;
         Object.keys(navLink).forEach(function (k) {
           if (k === navKey) navLink[k].setAttribute('aria-current', 'page');
           else navLink[k].removeAttribute('aria-current');
@@ -1717,7 +1832,7 @@ scale.</p>
       if (lightbox && lightboxImg && typeof lightbox.showModal === 'function') {
         /* "03 The Problem" tool screenshots, plus every image in Ideate (Trello
            board, lo-fi wireframes, pen & paper sketches) -- 2026-09-28 */
-        var zoomable = document.querySelectorAll('#problem .frame img, #problem .notes-row img, #ideate img');
+        var zoomable = document.querySelectorAll('#problem .frame img, #problem .notes-row img, #ideate img, .jr-post__body img');
         zoomable.forEach(function (img) {
           img.tabIndex = 0;
           img.setAttribute('role', 'button');
@@ -1745,6 +1860,114 @@ scale.</p>
         });
         lightbox.addEventListener('close', function () { lightboxImg.src = ''; });
       }
+
+      /* ---------------- journal ----------------
+         Reads the posts (views carrying data-topic) and builds the topic
+         timelines, topic counts, homepage band and case-study notice. */
+      (function () {
+        var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        function fmt(d) {
+          var p = d.split('-');
+          return +p[2] + ' ' + MONTHS[+p[1] - 1] + ' ' + p[0];
+        }
+        function el(tag, cls, text) {
+          var e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text) e.textContent = text;
+          return e;
+        }
+        function verBadge(v) { return v ? el('span', 'jr-ver', v) : null; }
+
+        var posts = [];
+        document.querySelectorAll('.view[data-topic]').forEach(function (v) {
+          posts.push({
+            el: v,
+            topic: v.dataset.topic,
+            date: v.dataset.date || '',
+            version: v.dataset.version,
+            title: v.dataset.title,
+            summary: v.dataset.summary,
+            section: v.dataset.section,
+            href: '#/' + v.id.slice(5).replace(/^journal-([^-]+)-/, 'journal/$1/')
+          });
+        });
+        posts.sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+        function inTopic(t) { return posts.filter(function (p) { return p.topic === t; }); }
+
+        /* post pages: date/version line and optional link back to the case study */
+        posts.forEach(function (p) {
+          var meta = p.el.querySelector('.jr-post__meta');
+          if (meta) {
+            meta.textContent = fmt(p.date);
+            var b = verBadge(p.version);
+            if (b) { meta.appendChild(document.createTextNode(' · ')); meta.appendChild(b); }
+          }
+          var sec = p.section && document.getElementById(p.section);
+          var body = p.el.querySelector('.jr-post__body');
+          if (sec && body && !body.querySelector('.jr-crosslink')) {
+            var h = sec.querySelector('h2, h3');
+            var c = el('p', 'jr-crosslink', 'This update changes ');
+            c.appendChild(el('b', '', h ? h.textContent.trim() : p.section));
+            c.appendChild(document.createTextNode(' in the case study. '));
+            var a = el('a', '', 'See the original section →');
+            a.href = '#' + p.section;
+            c.appendChild(a);
+            body.appendChild(c);
+          }
+        });
+
+        /* topic timelines */
+        document.querySelectorAll('.jr-timeline[data-topic]').forEach(function (ol) {
+          inTopic(ol.dataset.topic).forEach(function (p, i) {
+            var li = el('li', i === 0 ? 'is-latest' : '');
+            var top = el('p', 'mono jr-timeline__date', fmt(p.date) + ' ');
+            var b = verBadge(p.version);
+            if (b) top.appendChild(b);
+            var h = el('h2');
+            var a = el('a', '', p.title);
+            a.href = p.href;
+            h.appendChild(a);
+            li.appendChild(top);
+            li.appendChild(h);
+            if (p.summary) li.appendChild(el('p', 'jr-timeline__summary', p.summary));
+            ol.appendChild(li);
+          });
+        });
+
+        /* topic counts on the Journal page */
+        document.querySelectorAll('[data-count]').forEach(function (s) {
+          var n = inTopic(s.dataset.count).length;
+          s.textContent = n + (n === 1 ? ' update' : ' updates');
+        });
+
+        /* homepage band: newest post overall */
+        var home = document.querySelector('.jr-home');
+        if (home && posts.length) {
+          var p = posts[0];
+          var topicName = p.topic.charAt(0).toUpperCase() + p.topic.slice(1);
+          var eb = home.querySelector('.jr-band__eyebrow');
+          eb.textContent = 'Latest update · ' + topicName + ' · ' + fmt(p.date) + ' ';
+          var b = verBadge(p.version);
+          if (b) eb.appendChild(b);
+          home.querySelector('.jr-band__title').textContent = p.title;
+          home.querySelector('.jr-band__summary').textContent = p.summary || '';
+          home.querySelector('.jr-band__link').href = p.href;
+          home.hidden = false;
+        }
+
+        /* case-study notice */
+        document.querySelectorAll('.jr-callout[data-topic]').forEach(function (c) {
+          var list = inTopic(c.dataset.topic);
+          if (!list.length) return;
+          c.appendChild(el('b', '', list.length + (list.length === 1 ? ' update' : ' updates') + ' since this case study was published.'));
+          c.appendChild(document.createTextNode(' Latest: '));
+          var a = el('a', '', list[0].title);
+          a.href = list[0].href;
+          c.appendChild(a);
+          c.appendChild(document.createTextNode(' (' + fmt(list[0].date) + ') →'));
+          c.hidden = false;
+        });
+      })();
 
       /* ---------------- routing ---------------- */
       function applyHash(keepScroll) {
