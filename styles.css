@@ -715,8 +715,12 @@ p { overflow-wrap: break-word; }
   background: var(--panel);
   gap: 1px;
 }
-@media (min-width: 620px) {
-  .cs-meta { grid-template-columns: repeat(4, 1fr); }
+/* Five items: the odd one out spans the full row until there's room for
+   all five on one line. */
+.cs-meta div:last-child { grid-column: 1 / -1; }
+@media (min-width: 900px) {
+  .cs-meta { grid-template-columns: repeat(5, 1fr); }
+  .cs-meta div:last-child { grid-column: auto; }
 }
 .cs-meta div {
   background: var(--panel);
