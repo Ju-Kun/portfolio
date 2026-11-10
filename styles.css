@@ -186,6 +186,13 @@ p { overflow-wrap: break-word; }
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
+/* Four links no longer fit on one row on a phone at the full letter-spacing,
+   which stacked the sticky nav into three rows. Tighten so they stay on one. */
+@media (max-width: 480px) {
+  .nav__links { column-gap: 0.75rem; }
+  .nav__links a { letter-spacing: 0.04em; }
+}
+
 .nav__links a:hover,
 .nav__links a:focus-visible,
 .nav__links a[aria-current="page"] { color: var(--ink); border-color: var(--ink); }
