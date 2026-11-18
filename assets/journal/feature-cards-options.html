@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feature cards — options</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* No absolute positioning anywhere: stacked layers share one grid cell,
+     so every card is exactly as tall as its content and nothing can spill
+     over the rest of the page. */
+
+  /* ---------- page ---------- */
+  .mk { max-width: 60rem; margin: 0 auto; padding: 0 var(--gutter) var(--rhythm); }
+  .mk-head { padding: 3.5rem 0 1rem; }
+  .mk-eyebrow { margin: 0 0 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+  .mk-head h1 { margin: 0 0 .75rem; font-size: var(--step-3); font-weight: 600; letter-spacing: -.025em; line-height: 1.08; }
+  .mk-head p { margin: 0; max-width: 38rem; color: var(--ink-soft); line-height: 1.6; }
+  .mk-opt { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  .mk-opt__label { margin: 0 0 .5rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .mk-opt h2 { margin: 0 0 .4rem; font-size: var(--step-2); font-weight: 600; letter-spacing: -.02em; }
+  .mk-opt__desc { margin: 0 0 2rem; max-width: 38rem; color: var(--muted); line-height: 1.55; }
+
+  .grid3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ---------- shared pieces ---------- */
+  .kind { display: inline-block; padding: .2rem .5rem; border-radius: 4px; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; background: var(--panel); color: var(--panel-ink); }
+  .kind--upd { background: transparent; color: var(--ink-soft); box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .f-name { margin: .85rem 0 .3rem; font-size: var(--step-1); font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
+  .f-teaser { margin: 0; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .f-text { margin: 0; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+  .shot { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); background: var(--bg-inset); }
+  .hint { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; padding-top: 1.25rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .circle { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); font-size: .95rem; transition: transform .35s ease; }
+
+  /* every clickable card is a <button>; these reset only what a button
+     adds, on the card's own class, so nothing outranks the layout */
+  .flip, .ex__head {
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+    background: none; border: 0; padding: 0; margin: 0; width: 100%;
+  }
+  .flip:focus-visible, .ex__head:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 12px; }
+
+  /* ---------- A: flip ---------- */
+  .flip { display: block; perspective: 1400px; }
+  .flip__inner { display: grid; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+  .flip.is-open .flip__inner { transform: rotateY(180deg); }
+  .flip__face {
+    grid-area: 1 / 1; display: flex; flex-direction: column; min-height: 19rem;
+    padding: 1.25rem; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--bg);
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  }
+  .flip__front { background: linear-gradient(150deg in oklab, var(--rail-a), var(--rail-b)); border-color: var(--rail-edge); }
+  .flip__back { transform: rotateY(180deg); gap: .9rem; }
+  .flip:hover .circle { transform: rotate(180deg); }
+
+  /* ---------- B: expand ---------- */
+  .ex-list { display: grid; gap: .75rem; }
+  .ex { border: 1px solid var(--line-strong); border-radius: 12px; background: var(--bg); transition: border-color .2s; }
+  .ex:hover { border-color: var(--ink); }
+  .ex.is-open { border-color: var(--product-outline); }
+  .ex__head { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; }
+  .ex__head .f-name { margin: 0; font-size: var(--step-0); }
+  .ex__head .f-teaser { margin-top: .15rem; }
+  .ex.is-open .circle { transform: rotate(45deg); background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .ex__body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+  .ex.is-open .ex__body { grid-template-rows: 1fr; }
+  .ex__clip { overflow: hidden; min-height: 0; }
+  .ex__content { display: grid; gap: 1.25rem; padding: 0 1.25rem 1.5rem; }
+  @media (min-width: 640px) { .ex__content { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+  @media (max-width: 480px) { .ex__head .kind { display: none; } .ex__head { grid-template-columns: 1fr auto; } }
+
+  /* ---------- buttons ---------- */
+  .btns { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); }
+  .btn-cell { display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; }
+  .btn-cell__demo { min-height: 2.75rem; display: flex; align-items: center; }
+  .btn-cell p { margin: 0; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .btn-cell b { color: var(--ink); font-weight: 600; }
+  .b1 { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; padding: 0; border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: transform .35s ease; }
+  .b1 { border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); }
+  .b1:hover { transform: rotate(180deg); }
+  .b4 { display: inline-grid; place-items: end; width: 4.5rem; height: 3rem; padding: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg); cursor: pointer; }
+  .b4 span { display: block; width: 1.1rem; height: 1.1rem; background: linear-gradient(135deg, transparent 50%, var(--rail-edge) 50%); transition: width .3s, height .3s; }
+  .b4:hover span { width: 1.9rem; height: 1.9rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="mk">
+
+  <header class="mk-head">
+    <p class="mk-eyebrow">Journal · Ganbare · design options</p>
+    <h1>What's new since the case study</h1>
+    <p>Two ways to present the new features as cards you can open, and three styles for the button that opens them. Everything is clickable. Feature names and text are placeholders.</p>
+  </header>
+
+  <!-- ============ A ============ -->
+  <section class="mk-opt">
+    <p class="mk-opt__label">Option A</p>
+    <h2>Flip card</h2>
+    <p class="mk-opt__desc">The card turns over. Front: label, feature name, one-line teaser. Back: screenshot and two or three sentences.</p>
+    <div class="grid3">
+      <button class="flip" type="button" aria-expanded="false">
+        <span class="flip__inner">
+          <span class="flip__face flip__front"><span><span class="kind kind--upd">Updated</span></span><span class="f-name">New homepage layout</span><span class="f-teaser">The weekly view, reorganised.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
+          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-1-homepage-v2.png" alt=""><span class="f-text">Placeholder: what changed in the layout, and why.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+        </span>
+      </button>
+      <button class="flip" type="button" aria-expanded="false">
+        <span class="flip__inner">
+          <span class="flip__face flip__front"><span><span class="kind">New</span></span><span class="f-name">Training metrics</span><span class="f-teaser">See how the week actually went.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
+          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-3-live-tracker.png" alt=""><span class="f-text">Placeholder: which metrics, and what they show.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+        </span>
+      </button>
+      <button class="flip" type="button" aria-expanded="false">
+        <span class="flip__inner">
+          <span class="flip__face flip__front"><span><span class="kind">New</span></span><span class="f-name">Workout library</span><span class="f-teaser">Placeholder for another feature.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
+          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-2-library.png" alt=""><span class="f-text">Placeholder: what it does and what you learned.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ B ============ -->
+  <section class="mk-opt">
+    <p class="mk-opt__label">Option B</p>
+    <h2>Expand in place</h2>
+    <p class="mk-opt__desc">A list of feature rows. Clicking one opens it downward with a larger screenshot and room for a full paragraph. Calm, and the easiest to read on a phone.</p>
+    <div class="ex-list">
+      <div class="ex">
+        <button class="ex__head" type="button" aria-expanded="false"><span class="kind kind--upd">Updated</span><span><span class="f-name" style="display:block">New homepage layout</span><span class="f-teaser" style="display:block">The weekly view, reorganised.</span></span><span class="circle" aria-hidden="true">+</span></button>
+        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-1-homepage-v2.png" alt=""><p class="f-text">Placeholder: what changed, why, and what you noticed after a few weeks of using it. This design has room for a full paragraph.</p></div></div></div>
+      </div>
+      <div class="ex">
+        <button class="ex__head" type="button" aria-expanded="false"><span class="kind">New</span><span><span class="f-name" style="display:block">Training metrics</span><span class="f-teaser" style="display:block">See how the week actually went.</span></span><span class="circle" aria-hidden="true">+</span></button>
+        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-3-live-tracker.png" alt=""><p class="f-text">Placeholder: which metrics, and what they show.</p></div></div></div>
+      </div>
+      <div class="ex">
+        <button class="ex__head" type="button" aria-expanded="false"><span class="kind">New</span><span><span class="f-name" style="display:block">Workout library</span><span class="f-teaser" style="display:block">Placeholder for another feature.</span></span><span class="circle" aria-hidden="true">+</span></button>
+        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-2-library.png" alt=""><p class="f-text">Placeholder: what it does and what you learned.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Buttons ============ -->
+  <section class="mk-opt">
+    <p class="mk-opt__label">Buttons</p>
+    <h2>The control that opens a card</h2>
+    <p class="mk-opt__desc">Any of these works with any option above. Hover to see the movement.</p>
+    <div class="btns">
+      <div class="btn-cell"><div class="btn-cell__demo"><button class="b1" type="button" aria-label="Flip">↻</button></div><p><b>1 · Round flip icon.</b> Spins on hover. Used in A.</p></div>
+      <div class="btn-cell"><div class="btn-cell__demo"><button class="b4" type="button" aria-label="Open"><span></span></button></div><p><b>2 · Folded corner.</b> A page corner that lifts. Playful.</p></div>
+      <div class="btn-cell"><div class="btn-cell__demo"><a class="link-arrow" href="#" onclick="return false">Learn more <span aria-hidden="true">→</span></a></div><p><b>3 · Your gradient button.</b> Matches "Read the case study".</p></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  /* A: the card itself toggles */
+  document.querySelectorAll('.flip').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var open = card.classList.toggle('is-open');
+      card.setAttribute('aria-expanded', open);
+    });
+  });
+
+  /* B: the row header toggles its row */
+  document.querySelectorAll('.ex__head').forEach(function (head) {
+    head.addEventListener('click', function () {
+      var open = head.parentElement.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open);
+    });
+  });
+
+</script>
+</body>
+</html>

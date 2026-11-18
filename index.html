@@ -1335,9 +1335,17 @@
              view-journal-<topic> block below. -->
         <li>
           <a class="jr-topic" href="#/journal/ganbare">
-            <span class="jr-topic__name">Ganbare</span>
-            <span class="jr-topic__desc">Training app &mdash; updates since the case study</span>
-            <span class="mono jr-topic__count" data-count="ganbare"></span>
+            <span class="jr-topic__top">
+              <span>
+                <span class="jr-topic__name">Ganbare</span>
+                <span class="jr-topic__desc">Training app &mdash; updates since the case study</span>
+              </span>
+              <span class="mono jr-topic__tag">Live product</span>
+            </span>
+            <span class="jr-topic__foot">
+              <span class="mono jr-topic__count" data-count="ganbare"></span>
+              <span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span>
+            </span>
           </a>
         </li>
       </ul>
@@ -1938,8 +1946,9 @@ scale.</p>
 
         /* topic counts on the Journal page */
         document.querySelectorAll('[data-count]').forEach(function (s) {
-          var n = inTopic(s.dataset.count).length;
-          s.textContent = n + (n === 1 ? ' update' : ' updates');
+          var list = inTopic(s.dataset.count), n = list.length;
+          s.textContent = n + (n === 1 ? ' update' : ' updates') +
+            (n ? ' · Latest ' + fmt(list[0].date) : '');
         });
 
         /* homepage band: newest post overall */
