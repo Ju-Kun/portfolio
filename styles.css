@@ -394,6 +394,15 @@ p { overflow-wrap: break-word; }
 
 .project__side { display: flex; flex-direction: column; gap: 0; }
 
+/* Publication date (2026-11-18): a quiet italic sign-off under the
+   description, so it doesn't compete with the title or the button. */
+.project .project__date {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
 /* Outlined (2026-09-25) to separate the Role/Users/Platform/Status facts
    from the running paragraph above and the "Read the case study" button
    below -- rounded, but less than that button's full pill (999px), so
