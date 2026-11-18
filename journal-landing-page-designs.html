@@ -11,161 +11,115 @@
   /* Scratch comparison page -- not linked from the site. */
   body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); margin: 0; }
   .wrap { max-width: var(--content); margin: 0 auto; padding: 3rem 16px 6rem; }
-  .option { margin-top: 4.5rem; }
-  .option__label {
-    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: .06em;
-    text-transform: uppercase; color: var(--muted); margin: 0 0 .4rem;
-  }
+  .option { margin-top: 4rem; }
+  .option__label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 .4rem; }
   .option__note { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 1.5rem; }
   .mock { border: 1px dashed var(--line-strong); border-radius: 16px; padding: clamp(1.25rem, 4vw, 2.5rem); }
-  .mock h1 { font-size: var(--step-3); font-weight: 600; letter-spacing: -.03em; margin: 0 0 .5rem; line-height: 1.05; }
-  .mock .lead { color: var(--muted); margin: 0 0 2rem; max-width: var(--measure); }
-  .k { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .name { font-size: var(--step-2); font-weight: 600; letter-spacing: -.02em; margin: 0; line-height: 1.15; }
-  .desc { color: var(--ink-soft); margin: .4rem 0 0; }
-  a.card { color: inherit; text-decoration: none; display: block; }
 
-  /* ---- A: outlined card, like the project facts box ---- */
-  .a-card {
-    border: 1px solid var(--line-strong); border-radius: 16px; padding: 1.75rem;
-    display: grid; gap: 1.25rem; transition: border-color .2s, transform .2s;
+  /* ---- shared card: Option A as now on the site, but with a LIGHT surface
+     in both themes (fixed colours, so it never turns black in dark mode) ---- */
+  .card {
+    --c-bg: #ffffff; --c-ink: #0c0c0c; --c-soft: #3f3f3b; --c-muted: #6a6a68;
+    --c-line: #e3e3e0; --c-edge: #c9c9c5; --c-blue: #3d5a80;
+    display: grid; gap: 2.25rem; padding: 1.75rem;
+    background: var(--c-bg); color: var(--c-ink);
+    border: 1px solid var(--c-edge); border-radius: 16px;
+    text-decoration: none;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
   }
-  .a-card:hover { border-color: var(--product-outline); transform: translateY(-2px); }
-  .a-card__top { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
-  .a-tag { border: 1px solid var(--product-outline); color: var(--product-outline); border-radius: 999px; padding: .25rem .7rem; white-space: nowrap; }
-  .a-card__foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  .card__top { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+  .card__name { display: block; font-size: var(--step-2); font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+  .card__desc { display: block; margin-top: .4rem; color: var(--c-soft); }
+  .card__foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--c-line); }
+  .card__count { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: .06em; text-transform: uppercase; color: var(--c-muted); }
 
-  /* ---- B: soft gradient fill, the nav-rail colours ---- */
-  .b-card {
-    background: linear-gradient(135deg in oklab, var(--rail-a), var(--rail-b));
-    border: 1px solid var(--rail-edge); border-radius: 20px; padding: 2rem; color: #0c0c0c;
-    display: grid; gap: 1.5rem; transition: transform .2s, box-shadow .2s;
+  /* Corner tag split over two lines: narrower, so it sits snug in the corner */
+  .tag {
+    flex-shrink: 0; display: block; text-align: center;
+    font-family: var(--font-mono); font-size: .7rem; line-height: 1.25;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--c-blue); border: 1px solid var(--c-blue);
+    padding: .4rem .65rem; border-radius: 10px;
   }
-  .b-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgb(61 90 128 / .15); }
-  .b-card .desc, .b-card .k { color: #3f3f3b; }
-  .b-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
-  .b-stats b { display: block; font-family: var(--font-sans); font-size: var(--step-1); letter-spacing: -.01em; text-transform: none; color: #0c0c0c; }
 
-  /* ---- C: image + text, like a project tile ---- */
-  .c-card {
-    border: 1px solid var(--line-strong); border-radius: 16px; overflow: hidden;
-    display: grid; transition: transform .2s, border-color .2s;
-  }
-  .c-card:hover { transform: translateY(-2px); border-color: var(--product-outline); }
-  .c-card__img { background: linear-gradient(135deg in oklab, var(--rail-a), var(--rail-b)); padding: 1.5rem 1.5rem 0; display: flex; align-items: end; justify-content: center; min-height: 12rem; }
-  .c-card__img img { width: 100%; max-width: 22rem; border-radius: 10px 10px 0 0; box-shadow: 0 -4px 20px rgb(0 0 0 / .08); display: block; }
-  .c-card__body { padding: 1.75rem; display: grid; gap: 1rem; align-content: center; }
-  @media (min-width: 760px) { .c-card { grid-template-columns: 1fr 1.2fr; } .c-card__img { min-height: 16rem; } }
+  /* Backgrounds */
+  .bg-white  { --c-bg: #ffffff; }
+  .bg-grey   { --c-bg: #f6f6f5; --c-edge: #e3e3e0; }
+  .bg-blue   { --c-bg: #eef2fa; --c-edge: #d7dff4; --c-line: #d7dff4; }
+  .bg-grad   { background: linear-gradient(135deg in oklab, #eef2fa, #faf5ea); --c-edge: #d7dff4; --c-line: #dfe3ee; }
 
-  /* ---- D: coloured header band + latest update inside ---- */
-  .d-card { border: 1px solid var(--line-strong); border-radius: 16px; overflow: hidden; }
-  .d-card__band { background: var(--product-outline); color: #fff; padding: 1.5rem 1.75rem; display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; }
-  .d-card__band .name { color: #fff; }
-  .d-card__band .k { color: rgb(255 255 255 / .75); }
-  .d-card__body { padding: 1.5rem 1.75rem; display: grid; gap: 1.25rem; }
-  .d-latest { background: var(--bg-inset); border-radius: 12px; padding: 1.1rem 1.25rem; }
-  .d-latest p { margin: .3rem 0 0; }
-  .d-latest strong { font-weight: 600; }
-  .d-foot { display: flex; justify-content: flex-end; }
+  /* Hover lifts -- all discreet */
+  .lift-1:hover { transform: translateY(-1px); border-color: var(--c-blue); }
+  .lift-shadow:hover { box-shadow: 0 4px 14px rgb(61 90 128 / .10); border-color: var(--c-blue); }
+  .lift-none:hover { border-color: var(--c-blue); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+
+  .hint { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: .75rem 0 0; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p class="k">Scratch file &middot; not part of the site</p>
+  <p class="option__label">Scratch file &middot; not part of the site</p>
   <h1 style="font-size:var(--step-3);margin:.3rem 0 .5rem;letter-spacing:-.03em">Journal landing page designs</h1>
-  <p class="option__note">Four ways to show the Ganbare topic on the Journal page, in place of the current text row between two lines. Each one uses colours and shapes already on the site (the project facts outline, the nav-rail gradient, the pill buttons), so it should sit comfortably next to Case Studies &amp; Projects.</p>
+  <p class="option__note">Round 2, building on Option A. In every version: the card keeps a light background even when the site is in dark mode, the "Live product" tag is split over two lines so it sits neatly in the corner, and the hover lift is much smaller (it was 2px). Hover over each card to compare.</p>
 
-  <!-- ===================== A ===================== -->
   <section class="option">
-    <p class="option__label">Option A &mdash; Outlined card</p>
-    <p class="option__note">Closest to the current site. Same rounded outline as the Role/Users/Platform/Status box, with a small blue "Live" tag as the colour accent. Quietest of the four.</p>
+    <p class="option__label">Option A1 &mdash; White card, 1px lift</p>
+    <p class="option__note">Plain white surface. On hover it rises 1px and the outline turns blue.</p>
     <div class="mock">
-      <h1>Journal</h1>
-      <p class="lead">What changed in my projects after the case study was written, and why.</p>
-      <a class="card a-card" href="#">
-        <div class="a-card__top">
-          <div>
-            <p class="name">Ganbare</p>
-            <p class="desc">Training app &mdash; updates since the case study</p>
-          </div>
-          <span class="k a-tag">Live product</span>
-        </div>
-        <div class="a-card__foot">
-          <span class="k">1 update &middot; Latest 23 Oct 2026</span>
-          <span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span>
-        </div>
+      <a class="card bg-white lift-1" href="#">
+        <span class="card__top">
+          <span><span class="card__name">Ganbare</span><span class="card__desc">Training app &mdash; updates since the case study</span></span>
+          <span class="tag">Live<br>product</span>
+        </span>
+        <span class="card__foot"><span class="card__count">1 update &middot; Latest 23 Oct 2026</span><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></span>
       </a>
+      <p class="hint">Hover: 1px lift + blue outline</p>
     </div>
   </section>
 
-  <!-- ===================== B ===================== -->
   <section class="option">
-    <p class="option__label">Option B &mdash; Gradient card</p>
-    <p class="option__note">Fills the card with the blue-to-warm-yellow gradient from the case study's navigation panel. Most colourful; ties the journal visually to the case study it follows on from.</p>
+    <p class="option__label">Option A2 &mdash; Soft grey card, shadow only</p>
+    <p class="option__note">Same light grey as the site's inset panels. No movement on hover: just a faint blue shadow appears.</p>
     <div class="mock">
-      <h1>Journal</h1>
-      <p class="lead">What changed in my projects after the case study was written, and why.</p>
-      <a class="card b-card" href="#">
-        <div>
-          <p class="name">Ganbare</p>
-          <p class="desc">Training app &mdash; updates since the case study</p>
-        </div>
-        <div class="b-stats">
-          <span class="k">Updates <b>1</b></span>
-          <span class="k">Latest <b>23 Oct 2026</b></span>
-          <span class="k">Status <b>Live &amp; in daily use</b></span>
-        </div>
+      <a class="card bg-grey lift-shadow" href="#">
+        <span class="card__top">
+          <span><span class="card__name">Ganbare</span><span class="card__desc">Training app &mdash; updates since the case study</span></span>
+          <span class="tag">Live<br>product</span>
+        </span>
+        <span class="card__foot"><span class="card__count">1 update &middot; Latest 23 Oct 2026</span><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></span>
       </a>
+      <p class="hint">Hover: soft shadow + blue outline, no lift</p>
     </div>
   </section>
 
-  <!-- ===================== C ===================== -->
   <section class="option">
-    <p class="option__label">Option C &mdash; Image card</p>
-    <p class="option__note">Adds a screenshot of the app on a gradient panel, beside the text (stacked on phones). Most like a portfolio project tile, and gives the page something visual. Uses the homepage image that was removed from the first post.</p>
+    <p class="option__label">Option A3 &mdash; Pale blue card, 1px lift</p>
+    <p class="option__note">A very light tint of the nav-panel blue, for a touch of colour without going dark.</p>
     <div class="mock">
-      <h1>Journal</h1>
-      <p class="lead">What changed in my projects after the case study was written, and why.</p>
-      <a class="card c-card" href="#">
-        <div class="c-card__img">
-          <img src="assets/ganbare/product-1-homepage-v2.png" alt="">
-        </div>
-        <div class="c-card__body">
-          <span class="k">1 update &middot; Latest 23 Oct 2026</span>
-          <div>
-            <p class="name">Ganbare</p>
-            <p class="desc">Training app &mdash; updates since the case study</p>
-          </div>
-          <span><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></span>
-        </div>
+      <a class="card bg-blue lift-1" href="#">
+        <span class="card__top">
+          <span><span class="card__name">Ganbare</span><span class="card__desc">Training app &mdash; updates since the case study</span></span>
+          <span class="tag">Live<br>product</span>
+        </span>
+        <span class="card__foot"><span class="card__count">1 update &middot; Latest 23 Oct 2026</span><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></span>
       </a>
+      <p class="hint">Hover: 1px lift + blue outline</p>
     </div>
   </section>
 
-  <!-- ===================== D ===================== -->
   <section class="option">
-    <p class="option__label">Option D &mdash; Header band + latest update</p>
-    <p class="option__note">A solid blue band carries the title; underneath, a preview of the newest post so visitors see what's inside before clicking. Strongest colour, and the most informative.</p>
+    <p class="option__label">Option A4 &mdash; Pale gradient card, outline only</p>
+    <p class="option__note">A whisper of the blue-to-yellow nav gradient. On hover only the outline changes colour; nothing moves.</p>
     <div class="mock">
-      <h1>Journal</h1>
-      <p class="lead">What changed in my projects after the case study was written, and why.</p>
-      <a class="card d-card" href="#">
-        <div class="d-card__band">
-          <div>
-            <p class="name">Ganbare</p>
-            <span class="k">Training app &middot; Live product</span>
-          </div>
-          <span class="k">1 update</span>
-        </div>
-        <div class="d-card__body">
-          <div class="d-latest">
-            <span class="k">Latest &middot; 23 Oct 2026</span>
-            <p><strong>Starting the Ganbare journal</strong></p>
-            <p style="color:var(--ink-soft)">Where we'll document app iterations and new features.</p>
-          </div>
-          <div class="d-foot"><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></div>
-        </div>
+      <a class="card bg-grad lift-none" href="#">
+        <span class="card__top">
+          <span><span class="card__name">Ganbare</span><span class="card__desc">Training app &mdash; updates since the case study</span></span>
+          <span class="tag">Live<br>product</span>
+        </span>
+        <span class="card__foot"><span class="card__count">1 update &middot; Latest 23 Oct 2026</span><span class="link-arrow">Open journal <span aria-hidden="true">&rarr;</span></span></span>
       </a>
+      <p class="hint">Hover: blue outline only</p>
     </div>
   </section>
 </div>

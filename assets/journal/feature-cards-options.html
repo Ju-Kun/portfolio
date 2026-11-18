@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feature cards — options</title>
+<title>Feature cards — flip + folded corner</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <link rel="stylesheet" href="../../styles.css">
 <style>
-  /* No absolute positioning anywhere: stacked layers share one grid cell,
-     so every card is exactly as tall as its content and nothing can spill
-     over the rest of the page. */
+  /* No absolute positioning: stacked layers share one grid cell, so every
+     card is exactly as tall as its content and nothing spills over. */
 
   /* ---------- page ---------- */
   .mk { max-width: 60rem; margin: 0 auto; padding: 0 var(--gutter) var(--rhythm); }
@@ -17,152 +16,222 @@
   .mk-eyebrow { margin: 0 0 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
   .mk-head h1 { margin: 0 0 .75rem; font-size: var(--step-3); font-weight: 600; letter-spacing: -.025em; line-height: 1.08; }
   .mk-head p { margin: 0; max-width: 38rem; color: var(--ink-soft); line-height: 1.6; }
-  .mk-opt { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  .mk-opt { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
   .mk-opt__label { margin: 0 0 .5rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   .mk-opt h2 { margin: 0 0 .4rem; font-size: var(--step-2); font-weight: 600; letter-spacing: -.02em; }
   .mk-opt__desc { margin: 0 0 2rem; max-width: 38rem; color: var(--muted); line-height: 1.55; }
 
-  .grid3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+  /* inside the phone preview: just the cards */
+  .is-embed .mk-head, .is-embed .mk-opt__intro, .is-embed .phone-preview { display: none; }
+  .is-embed .mk-opt { margin-top: 0; border-top: 0; padding-top: 1.5rem; }
 
-  /* ---------- shared pieces ---------- */
+  /* ---------- card text ---------- */
   .kind { display: inline-block; padding: .2rem .5rem; border-radius: 4px; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; background: var(--panel); color: var(--panel-ink); }
   .kind--upd { background: transparent; color: var(--ink-soft); box-shadow: inset 0 0 0 1px var(--line-strong); }
-  .f-name { margin: .85rem 0 .3rem; font-size: var(--step-1); font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
-  .f-teaser { margin: 0; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
-  .f-text { margin: 0; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+  .f-name { display: block; margin: .85rem 0 .3rem; font-size: var(--step-1); font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
+  .f-teaser { display: block; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .f-text { display: block; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
   .shot { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); background: var(--bg-inset); }
-  .hint { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; padding-top: 1.25rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
-  .circle { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); font-size: .95rem; transition: transform .35s ease; }
 
-  /* every clickable card is a <button>; these reset only what a button
-     adds, on the card's own class, so nothing outranks the layout */
-  .flip, .ex__head {
-    font: inherit; color: inherit; text-align: left; cursor: pointer;
-    background: none; border: 0; padding: 0; margin: 0; width: 100%;
+  /* ---------- layout: 3 across on desktop, swipe row on phone ---------- */
+  .cards { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+  .swipe-hint { display: none; }
+  @media (max-width: 639px) {
+    /* No swiping in the web app: the row doesn't scroll by touch
+       (overflow hidden); the chevron buttons move it one card at a time. */
+    .cards {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;
+      gap: .75rem; overflow-x: hidden; scroll-behavior: smooth;
+      margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) .75rem;
+      scroll-padding-inline: var(--gutter);
+    }
+    .swipe-hint { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: .75rem; }
+    .nav-btn {
+      display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0;
+      border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink);
+      cursor: pointer; transition: border-color .2s, opacity .2s;
+    }
+    .nav-btn:not(:disabled):active { border-color: var(--product-outline); color: var(--product-outline); }
+    .nav-btn:disabled { opacity: .35; cursor: default; }
+    .nav-btn svg { width: 1.1rem; height: 1.1rem; }
+    .nav-count { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .dots { display: flex; gap: .35rem; }
+    .dots i { width: .4rem; height: .4rem; border-radius: 50%; background: var(--line-strong); transition: width .25s; }
+    .dots i.on { width: 1.2rem; border-radius: 999px; background: var(--product-outline); }
   }
-  .flip:focus-visible, .ex__head:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 12px; }
 
-  /* ---------- A: flip ---------- */
-  .flip { display: block; perspective: 1400px; }
+  /* ---------- flip card ---------- */
+  .flip { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; perspective: 1400px; }
+  .flip:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 12px; }
   .flip__inner { display: grid; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
   .flip.is-open .flip__inner { transform: rotateY(180deg); }
   .flip__face {
-    grid-area: 1 / 1; display: flex; flex-direction: column; min-height: 19rem;
-    padding: 1.25rem; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--bg);
+    grid-area: 1 / 1; display: grid; grid-template-rows: 1fr; min-height: 19rem;
+    border-radius: 12px; border: 1px solid var(--line-strong); background: var(--bg); overflow: hidden;
     backface-visibility: hidden; -webkit-backface-visibility: hidden;
   }
   .flip__front { background: linear-gradient(150deg in oklab, var(--rail-a), var(--rail-b)); border-color: var(--rail-edge); }
-  .flip__back { transform: rotateY(180deg); gap: .9rem; }
-  .flip:hover .circle { transform: rotate(180deg); }
+  .flip__back { transform: rotateY(180deg); }
+  /* content and corner share the one cell; the corner sits bottom-right */
+  .face__content { grid-area: 1 / 1; display: flex; flex-direction: column; gap: .9rem; padding: 1.25rem 1.25rem 4.5rem; }
+  .flip__front .face__content { gap: 0; }
+  .fold { grid-area: 1 / 1; align-self: end; justify-self: end; }
 
-  /* ---------- B: expand ---------- */
-  .ex-list { display: grid; gap: .75rem; }
-  .ex { border: 1px solid var(--line-strong); border-radius: 12px; background: var(--bg); transition: border-color .2s; }
-  .ex:hover { border-color: var(--ink); }
-  .ex.is-open { border-color: var(--product-outline); }
-  .ex__head { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; }
-  .ex__head .f-name { margin: 0; font-size: var(--step-0); }
-  .ex__head .f-teaser { margin-top: .15rem; }
-  .ex.is-open .circle { transform: rotate(45deg); background: var(--ink); color: var(--bg); border-color: var(--ink); }
-  .ex__body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
-  .ex.is-open .ex__body { grid-template-rows: 1fr; }
-  .ex__clip { overflow: hidden; min-height: 0; }
-  .ex__content { display: grid; gap: 1.25rem; padding: 0 1.25rem 1.5rem; }
-  @media (min-width: 640px) { .ex__content { grid-template-columns: 1.1fr 1fr; align-items: start; } }
-  @media (max-width: 480px) { .ex__head .kind { display: none; } .ex__head { grid-template-columns: 1fr auto; } }
+  @media (max-width: 639px) {
+    .flip__face { min-height: 15rem; }
+    .face__content { padding: 1rem 1rem 4rem; gap: .7rem; }
+    .f-name { font-size: var(--step-0); margin-top: .7rem; }
+    .flip__back .shot { aspect-ratio: 16 / 8; }
+  }
 
-  /* ---------- buttons ---------- */
-  .btns { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); }
-  .btn-cell { display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; }
-  .btn-cell__demo { min-height: 2.75rem; display: flex; align-items: center; }
-  .btn-cell p { margin: 0; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
-  .btn-cell b { color: var(--ink); font-weight: 600; }
-  .b1 { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; padding: 0; border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: transform .35s ease; }
-  .b1 { border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); }
-  .b1:hover { transform: rotate(180deg); }
-  .b4 { display: inline-grid; place-items: end; width: 4.5rem; height: 3rem; padding: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg); cursor: pointer; }
-  .b4 span { display: block; width: 1.1rem; height: 1.1rem; background: linear-gradient(135deg, transparent 50%, var(--rail-edge) 50%); transition: width .3s, height .3s; }
-  .b4:hover span { width: 1.9rem; height: 1.9rem; }
+  /* ---------- folded corner + "Learn more" underneath ----------
+     Two triangles in one square: the page underneath (dark, holding the
+     label) and the folded-over flap (light, with a soft shadow). Hovering
+     the card makes the square bigger, so the fold lifts and the label
+     slides into view. On touch screens it rests half-open so the label is
+     always readable. */
+  /* Round 2: no black underside; "Learn / more" on two lines so the label
+     is narrow and the corner only needs a small, discreet lift. The
+     underside colour is switchable (corner-a/b/c on <html>). */
+  .fold { display: grid; width: 2.5rem; height: 2.5rem; transition: width .35s cubic-bezier(.2,.7,.2,1), height .35s cubic-bezier(.2,.7,.2,1); }
+  .fold > * { grid-area: 1 / 1; }
+  .fold__under {
+    display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 .55rem .5rem 0;
+    background: var(--u-bg, #ffffff); color: var(--u-ink, #3d5a80);
+    box-shadow: inset 0 0 0 1px var(--u-edge, transparent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    font-family: var(--font-mono); font-size: .6rem; font-weight: 500; line-height: 1.3;
+    letter-spacing: .12em; text-transform: uppercase; text-align: right;
+  }
+  .fold__under span { opacity: 0; transform: translate(4px, 4px); transition: opacity .25s ease .1s, transform .35s ease .05s; }
+  .fold__flap {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-inset) 100%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    filter: drop-shadow(1px 1px 2px rgb(0 0 0 / .14));
+  }
+  .flip:hover .fold, .flip:focus-visible .fold { width: 5.25rem; height: 5.25rem; }
+  .flip:hover .fold__under span, .flip:focus-visible .fold__under span { opacity: 1; transform: none; }
+  @media (hover: none) {
+    .fold { width: 4.75rem; height: 4.75rem; }
+    .fold__under span { opacity: 1; transform: none; }
+  }
+  /* underside options */
+  .corner-a { --u-bg: #ffffff;  --u-ink: #3d5a80; }                    /* white, blue text */
+  .corner-b { --u-bg: #d7dff4;  --u-ink: #2c4466; }                    /* pale nav blue */
+  .corner-c { --u-bg: #c3e6ff;  --u-ink: #1c1c1a; }                    /* button pastel */
+  .corner-d { --u-bg: transparent; --u-ink: #3d5a80; --u-edge: #3d5a80; } /* outline only */
+
+  /* switcher (design doc only) */
+  .switch { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0 0; }
+  .switch button { font: inherit; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: .5rem .9rem; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink-soft); cursor: pointer; }
+  .switch button[aria-pressed="true"] { border-color: var(--product-outline); color: var(--product-outline); background: var(--bg-inset); }
+  .is-embed .switch { display: none; }
+
+  /* phone preview frame (desktop only) */
+  .phone-preview { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 900px) { .phone-preview { grid-template-columns: auto 1fr; } }
+  .phone { width: 390px; max-width: 100%; height: 640px; border: 10px solid var(--panel); border-radius: 36px; overflow: hidden; background: var(--bg); }
+  .phone iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .phone-notes { margin: 0; padding: 0 0 0 1.1rem; color: var(--ink-soft); line-height: 1.6; max-width: 26rem; }
+  .phone-notes li + li { margin-top: .6rem; }
+  @media (max-width: 639px) { .phone-preview { display: none; } }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   }
 </style>
+<script>if (location.search.indexOf('embed') > -1) document.documentElement.classList.add('is-embed');</script>
 </head>
 <body>
 <div class="mk">
 
   <header class="mk-head">
-    <p class="mk-eyebrow">Journal · Ganbare · design options</p>
+    <p class="mk-eyebrow">Journal · Ganbare · design option A</p>
     <h1>What's new since the case study</h1>
-    <p>Two ways to present the new features as cards you can open, and three styles for the button that opens them. Everything is clickable. Feature names and text are placeholders.</p>
+    <p>Flip cards with a folded corner. Hover a card: the corner lifts and "Learn more" appears underneath. Click to flip. Feature names and text are placeholders.</p>
   </header>
 
-  <!-- ============ A ============ -->
   <section class="mk-opt">
-    <p class="mk-opt__label">Option A</p>
-    <h2>Flip card</h2>
-    <p class="mk-opt__desc">The card turns over. Front: label, feature name, one-line teaser. Back: screenshot and two or three sentences.</p>
-    <div class="grid3">
+    <div class="mk-opt__intro">
+      <p class="mk-opt__label">Laptop / desktop</p>
+      <h2>Three across</h2>
+      <p class="mk-opt__desc">Hover to lift the corner, click anywhere on the card to flip it, click again to flip back. Use the buttons to compare colours for the underside of the corner (the phone preview follows).</p>
+      <div class="switch" role="group" aria-label="Corner underside colour">
+        <button type="button" data-corner="a" aria-pressed="true">A · White</button>
+        <button type="button" data-corner="b" aria-pressed="false">B · Pale blue</button>
+        <button type="button" data-corner="c" aria-pressed="false">C · Button pastel</button>
+        <button type="button" data-corner="d" aria-pressed="false">D · Outline only</button>
+      </div>
+    </div>
+
+    <div class="cards">
       <button class="flip" type="button" aria-expanded="false">
         <span class="flip__inner">
-          <span class="flip__face flip__front"><span><span class="kind kind--upd">Updated</span></span><span class="f-name">New homepage layout</span><span class="f-teaser">The weekly view, reorganised.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
-          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-1-homepage-v2.png" alt=""><span class="f-text">Placeholder: what changed in the layout, and why.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+          <span class="flip__face flip__front">
+            <span class="face__content"><span><span class="kind kind--upd">Updated</span></span><span class="f-name">New homepage layout</span><span class="f-teaser">The weekly view, reorganised.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Learn<br>more</span></span><span class="fold__flap"></span></span>
+          </span>
+          <span class="flip__face flip__back">
+            <span class="face__content"><img class="shot" src="../ganbare/product-1-homepage-v2.png" alt=""><span class="f-text">Placeholder: what changed in the layout, and why.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Back</span></span><span class="fold__flap"></span></span>
+          </span>
         </span>
       </button>
       <button class="flip" type="button" aria-expanded="false">
         <span class="flip__inner">
-          <span class="flip__face flip__front"><span><span class="kind">New</span></span><span class="f-name">Training metrics</span><span class="f-teaser">See how the week actually went.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
-          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-3-live-tracker.png" alt=""><span class="f-text">Placeholder: which metrics, and what they show.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+          <span class="flip__face flip__front">
+            <span class="face__content"><span><span class="kind">New</span></span><span class="f-name">Training metrics</span><span class="f-teaser">See how the week actually went.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Learn<br>more</span></span><span class="fold__flap"></span></span>
+          </span>
+          <span class="flip__face flip__back">
+            <span class="face__content"><img class="shot" src="../ganbare/product-3-live-tracker.png" alt=""><span class="f-text">Placeholder: which metrics, and what they show.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Back</span></span><span class="fold__flap"></span></span>
+          </span>
         </span>
       </button>
       <button class="flip" type="button" aria-expanded="false">
         <span class="flip__inner">
-          <span class="flip__face flip__front"><span><span class="kind">New</span></span><span class="f-name">Workout library</span><span class="f-teaser">Placeholder for another feature.</span><span class="hint">See details<span class="circle" aria-hidden="true">↻</span></span></span>
-          <span class="flip__face flip__back"><img class="shot" src="../ganbare/product-2-library.png" alt=""><span class="f-text">Placeholder: what it does and what you learned.</span><span class="hint">Back<span class="circle" aria-hidden="true">↺</span></span></span>
+          <span class="flip__face flip__front">
+            <span class="face__content"><span><span class="kind">New</span></span><span class="f-name">Workout library</span><span class="f-teaser">Placeholder for another feature.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Learn<br>more</span></span><span class="fold__flap"></span></span>
+          </span>
+          <span class="flip__face flip__back">
+            <span class="face__content"><img class="shot" src="../ganbare/product-2-library.png" alt=""><span class="f-text">Placeholder: what it does and what you learned.</span></span>
+            <span class="fold" aria-hidden="true"><span class="fold__under"><span>Back</span></span><span class="fold__flap"></span></span>
+          </span>
         </span>
+      </button>
+    </div>
+    <div class="swipe-hint">
+      <button class="nav-btn" type="button" data-dir="-1" aria-label="Previous card" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+      <button class="nav-btn" type="button" data-dir="1" aria-label="Next card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
       </button>
     </div>
   </section>
 
-  <!-- ============ B ============ -->
-  <section class="mk-opt">
-    <p class="mk-opt__label">Option B</p>
-    <h2>Expand in place</h2>
-    <p class="mk-opt__desc">A list of feature rows. Clicking one opens it downward with a larger screenshot and room for a full paragraph. Calm, and the easiest to read on a phone.</p>
-    <div class="ex-list">
-      <div class="ex">
-        <button class="ex__head" type="button" aria-expanded="false"><span class="kind kind--upd">Updated</span><span><span class="f-name" style="display:block">New homepage layout</span><span class="f-teaser" style="display:block">The weekly view, reorganised.</span></span><span class="circle" aria-hidden="true">+</span></button>
-        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-1-homepage-v2.png" alt=""><p class="f-text">Placeholder: what changed, why, and what you noticed after a few weeks of using it. This design has room for a full paragraph.</p></div></div></div>
-      </div>
-      <div class="ex">
-        <button class="ex__head" type="button" aria-expanded="false"><span class="kind">New</span><span><span class="f-name" style="display:block">Training metrics</span><span class="f-teaser" style="display:block">See how the week actually went.</span></span><span class="circle" aria-hidden="true">+</span></button>
-        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-3-live-tracker.png" alt=""><p class="f-text">Placeholder: which metrics, and what they show.</p></div></div></div>
-      </div>
-      <div class="ex">
-        <button class="ex__head" type="button" aria-expanded="false"><span class="kind">New</span><span><span class="f-name" style="display:block">Workout library</span><span class="f-teaser" style="display:block">Placeholder for another feature.</span></span><span class="circle" aria-hidden="true">+</span></button>
-        <div class="ex__body"><div class="ex__clip"><div class="ex__content"><img class="shot" src="../ganbare/product-2-library.png" alt=""><p class="f-text">Placeholder: what it does and what you learned.</p></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Buttons ============ -->
-  <section class="mk-opt">
-    <p class="mk-opt__label">Buttons</p>
-    <h2>The control that opens a card</h2>
-    <p class="mk-opt__desc">Any of these works with any option above. Hover to see the movement.</p>
-    <div class="btns">
-      <div class="btn-cell"><div class="btn-cell__demo"><button class="b1" type="button" aria-label="Flip">↻</button></div><p><b>1 · Round flip icon.</b> Spins on hover. Used in A.</p></div>
-      <div class="btn-cell"><div class="btn-cell__demo"><button class="b4" type="button" aria-label="Open"><span></span></button></div><p><b>2 · Folded corner.</b> A page corner that lifts. Playful.</p></div>
-      <div class="btn-cell"><div class="btn-cell__demo"><a class="link-arrow" href="#" onclick="return false">Learn more <span aria-hidden="true">→</span></a></div><p><b>3 · Your gradient button.</b> Matches "Read the case study".</p></div>
+  <section class="mk-opt phone-preview">
+    <div class="phone"><iframe src="feature-cards-options.html?embed" title="Phone preview of the feature cards"></iframe></div>
+    <div>
+      <p class="mk-opt__label">Phone</p>
+      <h2>Swipe row</h2>
+      <ul class="phone-notes">
+        <li>Cards sit side by side, so the whole set takes the height of one card instead of three stacked.</li>
+        <li>No swiping (the web app doesn't support it): chevron buttons under the row move one card at a time, and grey out at either end.</li>
+        <li>Each card is a little shorter, and the next card peeks in from the right so it's clear there's more.</li>
+        <li>Phones can't hover, so the corner rests slightly open with "Learn / more" always visible.</li>
+        <li>Dots between the chevrons show which card you're on.</li>
+      </ul>
     </div>
   </section>
 
 </div>
 
 <script>
-  /* A: the card itself toggles */
   document.querySelectorAll('.flip').forEach(function (card) {
     card.addEventListener('click', function () {
       var open = card.classList.toggle('is-open');
@@ -170,14 +239,39 @@
     });
   });
 
-  /* B: the row header toggles its row */
-  document.querySelectorAll('.ex__head').forEach(function (head) {
-    head.addEventListener('click', function () {
-      var open = head.parentElement.classList.toggle('is-open');
-      head.setAttribute('aria-expanded', open);
-    });
-  });
+  /* phone: chevrons move the row one card at a time (no swipe) */
+  var row = document.querySelector('.cards');
+  var cards = row.children;
+  var dots = document.querySelectorAll('.dots i');
+  var prev = document.querySelector('.nav-btn[data-dir="-1"]');
+  var next = document.querySelector('.nav-btn[data-dir="1"]');
+  var current = 0;
+  function go(i) {
+    current = Math.max(0, Math.min(cards.length - 1, i));
+    row.scrollLeft = cards[current].offsetLeft - cards[0].offsetLeft;
+    dots.forEach(function (d, j) { d.classList.toggle('on', j === current); });
+    prev.disabled = current === 0;
+    next.disabled = current === cards.length - 1;
+  }
+  prev.addEventListener('click', function () { go(current - 1); });
+  next.addEventListener('click', function () { go(current + 1); });
 
+  /* corner colour switcher; carried into the phone preview via ?corner= */
+  var root = document.documentElement;
+  var m = location.search.match(/corner=([a-d])/);
+  function setCorner(c) {
+    root.classList.remove('corner-a', 'corner-b', 'corner-c', 'corner-d');
+    root.classList.add('corner-' + c);
+    document.querySelectorAll('.switch button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.corner === c);
+    });
+    var f = document.querySelector('.phone iframe');
+    if (f) f.src = 'feature-cards-options.html?embed&corner=' + c;
+  }
+  document.querySelectorAll('.switch button').forEach(function (b) {
+    b.addEventListener('click', function () { setCorner(b.dataset.corner); });
+  });
+  root.classList.add('corner-' + (m ? m[1] : 'a'));
 </script>
 </body>
 </html>
